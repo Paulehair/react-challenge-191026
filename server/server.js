@@ -7,7 +7,7 @@ const cors = require('cors')
 const dotenv = require('dotenv')
 
 dotenv.config({
-    path: 'config.env'
+    path: '../config.env'
 })
 //On définit notre objet express nommé app
 const app = express();
@@ -49,5 +49,5 @@ app.use("/user", router);
 require(__dirname + "/controllers/userController")(router);
 
 //Définition et mise en place du port d'écoute
-const port = process.env.PORT
+const port = process.env.PORT;
 app.listen(port, () => console.log(`Listening on port ${port}`));

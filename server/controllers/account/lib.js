@@ -3,17 +3,21 @@ const passwordHash = require("password-hash");
 
 async function signup(req, res) {
     const {
+        firstname,
+        lastname,
         password,
         email
     } = req.body;
-    if (!email || !password) {
-        //Le cas où l'email ou bien le password ne serait pas soumit ou nul
+    if (!email || !password || !lastname || !firstname) {
+        //Le cas où l'email, le password, le firstname ou le lastname ne serait pas soumit ou nul
         return res.status(400).json({
             text: "Requête invalide"
         });
     }
     // Création d'un objet user, dans lequel on hash le mot de passe
     const user = {
+        firstname,
+        lastname,
         email,
         password: passwordHash.generate(password)
     };
