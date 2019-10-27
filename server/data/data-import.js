@@ -54,8 +54,10 @@ const deleteData = async () => {
     try {
         await User.deleteMany();
         console.log('Data successfully deleted.');
+        process.exit();
     } catch (err) {
         console.log(err);
+        process.exit();
     }
 };
 
