@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const passwordHash = require("password-hash");
 const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema({
@@ -49,8 +48,10 @@ userSchema.pre('save', async function (next) {
 });
 
 userSchema.methods = {
-    authenticate: function (password) {
-        return passwordHash.verify(password, this.password);
+    authenticate: async function (submittedPassword, userPassword) {
+        const value = await bcrypt.compare(submittedPassword, userPassword)
+        console.log(value)
+        return await bcrypt.compare(submittedPassword, userPassword);
     }
 };
 
