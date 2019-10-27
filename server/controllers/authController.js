@@ -23,7 +23,7 @@ exports.signup = async (req, res) => {
             password: req.body.password
         });
         
-        const token = await signToken(newUser._id);
+        const token = signToken(newUser._id);
         
         res.status(200).json({
             status: "Succès",
