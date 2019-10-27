@@ -2,6 +2,7 @@ const User = require("../models/userModel");
 const jwt = require('jsonwebtoken');
 const config = require("../config/config");
 
+// Create token to allow server/client connection
 const signToken = id => {
     return jwt.sign({
         id
@@ -13,6 +14,8 @@ const signToken = id => {
 exports.signup = async (req, res) => {
 
     try {
+        // Specify each property to avoid user to add unwanted information
+        // e.g: users granting themselves admin privileges
         const newUser = await User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,

@@ -1,3 +1,4 @@
+//TODO: Verify that a user is connected in order to access students list
 exports.getAllUsers = (req, res) => {
     return res.status(200).json({
         status: 'success',
@@ -11,9 +12,3 @@ exports.getUser = (req, res) => {
         data: {}
     })
 }
-
-// const account = require('./authController');
-
-// module.exports = function (app) {
-//     app.post('/login', account.login);
-// }
