@@ -1,8 +1,8 @@
 const User = require("../models/userModel");
-const passwordHash = require("password-hash");
-const jwt = require("jwt-simple");
+const jwt = require('jsonwebtoken');
 const config = require("../config/config");
 
+// Create token to allow server/client connection
 const signToken = id => {
     return jwt.sign({
         id
@@ -11,34 +11,36 @@ const signToken = id => {
     });
 };
 
-async function signup(req, res) {
+exports.signup = async (req, res) => {
+
     try {
-        // Sauvegarde de l'utilisateur en base
+        // Specify each property to avoid user to add unwanted information
+        // e.g: users granting themselves admin privileges
         const newUser = await User.create({
             firstName: req.body.firstName,
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password
         });
-
-        console.log(newUser)
+        
         const token = signToken(newUser._id);
-
-        return res.status(200).json({
-            text: "Succès",
+        
+        res.status(200).json({
+            status: "Succès",
             data: {
                 user: newUser
             },
             token
         });
-    } catch (error) {
-        return res.status(500).json({
-            error
-        });
+    } catch(err) {
+        res.status(500).json({
+            status: 'fail',
+            error: err
+        })
     }
 }
 
-async function login(req, res) {
+exports.login = async (req, res) => {
     const {
         password,
         email
@@ -73,7 +75,3 @@ async function login(req, res) {
     }
 }
 
-//On exporte nos deux fonctions
-
-exports.login = login;
-exports.signup = signup;
