@@ -16,9 +16,16 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
+const DB = process.env.DATABASE.replace(
+    '<PASSWORD>',
+    process.env.DATABASE_PASSWORD
+);
+
+
 //Connexion à la base de donnée
 mongoose
-  .connect("mongodb://localhost/db", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
+  .connect(DB, 
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => {
     console.log("Connected to mongoDB");
   })
@@ -50,4 +57,11 @@ require(__dirname + "/controllers/userController")(router);
 
 //Définition et mise en place du port d'écoute
 const port = process.env.PORT;
-app.listen(port, () => console.log(`Listening on port ${port}`));
+const server = app.listen(port, () => console.log(`Listening on port ${port}`));
+
+
+// Close server if an error is caught
+process.on('unhandledRejection', err => {
+    console.error(err.name, err.message);
+    server.close(() => process.exit(1));
+});
