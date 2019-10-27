@@ -1,3 +1,4 @@
 module.exports = {
-    "secret": "secretsecretsecretsecretsecret"
+    "JWT_SECRET": "secretsecretsecretsecretsecret",
+    "JWT_EXPIRATION_TIME": "30 d"
 }

@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
-const passwordHash = require("password-hash");
-const jwt = require("jwt-simple");
-const config = require("../config/config");
+const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -39,12 +37,21 @@ const userSchema = mongoose.Schema({
     }
 });
 
+// Password hash function before creating new user entry
+userSchema.pre('save', async function (next) {
+    // Only run this function if password was either created or modified
+    if (!this.isModified('password')) return next();
+
+    // Hash the password with cost of 12
+    this.password = await bcrypt.hash(this.password, 12);
+    next();
+});
+
 userSchema.methods = {
-    authenticate: function (password) {
-        return passwordHash.verify(password, this.password);
-    },
-    getToken: function () {
-        return jwt.encode(this, config.secret);
+    authenticate: async function (submittedPassword, userPassword) {
+        const value = await bcrypt.compare(submittedPassword, userPassword)
+        console.log(value)
+        return await bcrypt.compare(submittedPassword, userPassword);
     }
 };
 
