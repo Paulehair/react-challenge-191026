@@ -4,9 +4,10 @@ const mongoose = require("mongoose");
 
 let databaseConnection = "Waiting for Database response...";
 
-router.get("/", function (req, res, next) {
-    res.send(databaseConnection);
-});
+// router.get("/", function (req, res, next) {
+//     res.send(databaseConnection);
+// });
+router.route('/').get(() => res.send(databaseConnection));
 
 mongoose.connect("mongodb://mongodb:27017/test");
 
