@@ -11,8 +11,21 @@ services:
                 entrypoint: ["npm", "start"]
                 networks: 
                         - webappnetwork
+
+        api:
+                image: node:alpine
+                restart: always
+                ports: 
+                        - "9000:3000"
+                volumes: 
+                        - ./server:/client/src/app
+                        - /server/node_modules
+                depends_on: 
+                        - mongodb
+                networks: 
+                        - webappnetwork
         
-        mongo: 
+        mongodb: 
                 image: mongo
                 restart: always
                 container_name: mongodb
@@ -20,7 +33,7 @@ services:
                         - ./data-node:/data/db
                 ports: 
                         - "27017:27017"
-                command: mongod --noauth --smallfiles
+                command: mongod --noauth
                 networks: 
                         - webappnetwork
                 

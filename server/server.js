@@ -3,17 +3,17 @@ const mongoose = require("mongoose")
 const dotenv = require('dotenv')
 
 dotenv.config({
-    path: '../config.env'
+  path: '../config.env'
 })
 
 const DB = process.env.DATABASE.replace(
-    '<PASSWORD>',
-    process.env.DATABASE_PASSWORD
+  '<PASSWORD>',
+  process.env.DATABASE_PASSWORD
 );
 
 //Connexion à la base de donnée
 mongoose
-  .connect(DB, 
+  .connect(DB,
     { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
   .then(() => {
     console.log("Connected to mongoDB");
@@ -31,6 +31,6 @@ const server = app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Close server if an error is caught
 process.on('unhandledRejection', err => {
-    console.error(err.name, err.message);
-    server.close(() => process.exit(1));
+  console.error(err.name, err.message);
+  server.close(() => process.exit(1));
 });
