@@ -4,7 +4,7 @@ const morgan = require('morgan')
 
 //On définit notre objet express nommé app
 const app = express();
-
+const AppError = require('./services/AppError')
 
 //Body Parser
 const urlencodedParser = bodyParser.urlencoded({
