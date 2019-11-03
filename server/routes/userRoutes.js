@@ -7,9 +7,16 @@ router
     .route('/')
     .get(userController.getAllUsers)
 
+/**
+ * TODO: 
+ * create a middleware function to checkif a user 
+ * is connected before sending back data
+ */
 router
     .route('/:id')
     .get(userController.getUser)
+    .patch(userController.updateUser)
+//
 
 router
     .route('/signup')

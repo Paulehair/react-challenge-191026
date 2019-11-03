@@ -1,17 +1,9 @@
 const fs = require('fs');
 const deburr = require('lodash.deburr');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
 const User = require('./../models/userModel');
 
-dotenv.config({
-    path: './../../config.env'
-});
-
-const DB = process.env.DATABASE.replace(
-    '<PASSWORD>',
-    process.env.DATABASE_PASSWORD
-);
+const DB = "mongodb://mongodb:27017/test"
 
 // Get students data from json file
 const students = JSON.parse(fs.readFileSync('./data-students.json'))
