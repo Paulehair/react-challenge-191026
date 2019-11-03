@@ -25,7 +25,16 @@ app.use(function (req, res, next) {
 
 // Router import
 const userRouter = require('./routes/userRoutes')
-app.use("/user", userRouter);
+app.use("/api/v1/users", userRouter);
+
+
+/**
+ * Data import router
+ * Only to be used for inserting / deleting original data
+
+const dataRouter = require('./routes/dataRoutes')
+app.use("/api/v1/data",dataRouter)
+*/
 
 // create new appError if an error is caught during an operation
 app.all('*', (req, res, next) => {

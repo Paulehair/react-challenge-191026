@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 
-const DB = "mongodb://mongodb:27017/test"
+const DB = "mongodb://mongodb:27017/users"
 const PORT = 9000
 
 // Connect to database
