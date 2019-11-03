@@ -1,7 +1,7 @@
-FROM node:alpine
-WORKDIR /api
-COPY package*.json /api/
+FROM node:10
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
-COPY . /api/
-EXPOSE 80
-CMD ["npm", "start"]
+COPY . .
+EXPOSE 9000
+CMD [ "npm", "start" ]
