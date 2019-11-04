@@ -5,17 +5,17 @@ const authController = require('../controllers/authController')
 
 router
     .route('/')
-    .get(userController.getAllUsers)
+    .get(authController.checkLogIn, userController.getAllUsers)
 
 /**
  * TODO: 
- * create a middleware function to checkif a user 
+ * create a middleware function to check if a user 
  * is connected before sending back data
  */
 router
     .route('/:id')
-    .get(userController.getUser)
-    .patch(userController.updateUser)
+    .get(authController.checkLogIn, userController.getUser)
+    .patch(authController.checkLogIn, userController.updateUser)
 //
 
 router
@@ -25,5 +25,13 @@ router
 router
     .route('/login')
     .post(authController.login)
+
+router
+    .route('/add-user')
+    .post(authController.checkLogIn, authController.protect, userController.createUser)
     
+router
+    .route('/delete-user/:id')
+    .delete(authController.checkLogIn, authController.protect, userController.deleteUser)
+
 module.exports = router;
