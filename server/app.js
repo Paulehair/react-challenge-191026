@@ -23,18 +23,22 @@ app.use(function (req, res, next) {
     next();
 });
 
-// Router import
+// Router imports
 const userRouter = require('./routes/userRoutes')
 app.use("/api/v1/users", userRouter);
+
+const skillRouter = require('./routes/skillRoutes')
+app.use("/api/v1/skills", skillRouter);
 
 
 /**
  * Data import router
  * Only to be used for inserting / deleting original data
-
-const dataRouter = require('./routes/dataRoutes')
-app.use("/api/v1/data",dataRouter)
 */
+// const dataRouter = require('./routes/dataRoutes')
+// app.use("/api/v1/data",dataRouter)
+
+
 
 // create new appError if an error is caught during an operation
 app.all('*', (req, res, next) => {
