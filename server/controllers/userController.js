@@ -1,7 +1,7 @@
 const User = require('./../models/userModel')
 const catchAsync = require('./../services/catchAsync')
+const AppError = require("../services/appError")
 
-//TODO: Verify that a user is connected in order to access students list
 exports.getAllUsers = catchAsync(async (req, res) => {
     const users = await User.find()
     res.status(200).json({

@@ -38,8 +38,12 @@ const userSchema = mongoose.Schema({
             type: String,
             enum: ['A', 'B', 'C', 'D', 'E', 'F', null]
         }
-    }]
-}, {
+    }],
+    firstConnection: {
+        type: Boolean,
+        default: true
+    }
+},  {
     timestamps: {
         createdAt: "created_at"
     }
