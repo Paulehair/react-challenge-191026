@@ -10,12 +10,12 @@ const dotenv = require('dotenv');
 const headers = {
   "Content-Type": "application/json"
 };
-const burl = `http://localhost:8000`;
+const burl = `http://localhost:9000/api/v1/users/login`;
 
 export default {
   login: function(email, password) {
     return axios.post(
-      `${burl}/user/login`,
+      `${burl}`,
       {
         email,
         password

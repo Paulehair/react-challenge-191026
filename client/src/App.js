@@ -4,6 +4,7 @@ import { Dashboard } from "./components/Dashboard/Dashboard";
 import { Login } from "./components/Login/Login";
 import { Signup } from "./components/Signup/Signup";
 import { PrivateRoute } from "./components/PrivateRoute";
+import './index.css'
 
 export default class App extends Component {
   render() {
