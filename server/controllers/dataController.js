@@ -1,5 +1,8 @@
 const deburr = require('lodash.deburr');
 const User = require('./../models/userModel');
+const Skill = require('./../models/skillModel');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
 
 const students = [
     {
@@ -376,5 +379,60 @@ exports.importData = async (req, res) => {
             console.log(err);
             process.exit();
         }
+    }
+}
+
+exports.importSkills = async (req, res) => {
+    const skills = [
+        {
+            name: "Programmation côté client"
+        },
+        {
+            name: "Programmation côté serveur"
+        },
+        {
+            name: "Design UI"
+        },
+        {
+            name: "UX"
+        },
+        {
+            name: "Gestion de projet"
+        }
+    ]
+    try {
+        await Skill.create(skills);
+        console.log('Data successfully inserted.');
+        process.exit();
+    } catch (err) {
+        console.log(err);
+        process.exit();
+    }
+}
+
+exports.updateData = async (req, res) => {
+    try {
+        let skills = await Skill.find()
+        skills = skills.map(skill => {
+            return {
+                skill_id: skill._id,
+                level: undefined
+            }
+        })
+        const skillSet = {
+            skills: skills 
+        }
+        const students = await User.find({ role: { $eq: 'user' } })
+        students.forEach(async student => {
+            await User.findByIdAndUpdate(student._id, skillSet, {
+                new: true,
+                runValidators: true,
+                useFindAndModify: false
+            })
+        })
+        process.exit();
+    } catch (err) {
+        console.log(err);
+        process.exit();
     }
 }

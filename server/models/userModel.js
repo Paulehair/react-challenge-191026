@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const bcrypt = require('bcryptjs');
+const Schema = mongoose.Schema()
 
 const userSchema = mongoose.Schema({
     firstName: {
@@ -30,7 +31,14 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    skills: [{
+        skill_id: String,
+        level: {
+            type: String,
+            enum: ['A', 'B', 'C', 'D', 'E', 'F', null]
+        }
+    }]
 }, {
     timestamps: {
         createdAt: "created_at"
