@@ -49,10 +49,7 @@ exports.login = catchAsync(async (req, res, next) => {
     // On check si l'utilisateur existe en base
     const user = await User.findOne({
         email
-    }).select({
-        "password": 1,
-        "firstConnection": 1
-    });
+    })
 
     if (!user || !(await user.authenticate(password, user.password))) {
         return next(new AppError('E-mail ou mot de passe incorrect'), 401);
@@ -63,7 +60,10 @@ exports.login = catchAsync(async (req, res, next) => {
     res.status(200).json({
         token,
         text: "Authentification réussie",
-        firstConnection: user.firstConnection
+        firstConnection: user.firstConnection,
+        data: {
+            user
+        }
     });
 })
 
