@@ -23,9 +23,6 @@ router
     .route('/:id')
     .get(authController.checkLogIn, userController.getUser)
     .patch(authController.checkLogIn, userController.updateUser)
-
-router
-    .route('/delete-user/:id')
-    .delete(authController.checkLogIn, authController.protect, userController.deleteUser)
+    .delete(authController.checkLogIn, authController.protect, userController.deleteUser)    
 
 module.exports = router;

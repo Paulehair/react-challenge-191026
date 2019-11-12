@@ -11,6 +11,7 @@ router
 router
     .route('/:id')
     .get(skillController.getSkill)
+    .patch(authController.checkLogIn, authController.protect, skillController.updateSkill)
     .delete(authController.checkLogIn, authController.protect, skillController.deleteSkill)
 
 module.exports = router

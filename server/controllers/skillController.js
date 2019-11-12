@@ -49,6 +49,15 @@ exports.addSkill = catchAsync(async (req, res, next) => {
     })
 })
 
+exports.updateSkill = catchAsync(async (req, res) => {
+    await Skill.findByIdAndUpdatete(req.params.id, {
+        name: req.body.name
+    })
+    res.status(200).json({
+        status: 'success'
+    })
+})
+
 exports.deleteSkill = catchAsync(async (req, res) => {
     await Skill.findByIdAndDelete(req.params.id)
     await User.updateMany({
