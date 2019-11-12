@@ -1,3 +1,5 @@
+@import './../../global/variables';
+
 .CardProfile {
     overflow: hidden;
     position: relative;
@@ -33,7 +35,8 @@
     border-radius: 50%;
     overflow: hidden;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
 }
 .CardProfile .ImgProfile .Image {
     max-width: 100%;
@@ -45,7 +48,8 @@
 .CardProfile .Name {
     top: 230px;
     left: 50%;
-    transform: translateX(-50%);
+    -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
     font-size: 24px;
 }
 
