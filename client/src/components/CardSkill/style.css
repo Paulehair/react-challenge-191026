@@ -1,0 +1,16 @@
+.CardSkill {
+    color: white;
+    font-size: 18px;
+    background: #FF885F;
+    border: 1px solid #DA643A;
+    border-radius: 13px;
+    padding: 22px 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: calc(45% - 36px);
+    margin-bottom: 16px;
+}
+.CardSkill .Note {
+    font-size: 40px;
+}

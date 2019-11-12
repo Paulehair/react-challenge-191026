@@ -1,7 +1,7 @@
 import React from "react";
-import "./style.css"
 import API from "../../utils/API";
-import Navigation from "../Navigation/Navigation.js"
+import Navigation from "../../components/Navigation/Navigation.js"
+import MyProfile from "../../components/MyProfile/MyProfile.js"
 
 export class Dashboard extends React.Component {
   disconnect = () => {
@@ -14,6 +14,9 @@ export class Dashboard extends React.Component {
         <div className="Header">
           <Navigation />
         </div>
+
+        { /* faire un tab qui appelle les composants "my profile" et "stundent list" */ }
+          <MyProfile />
       </div>
     );
   }
