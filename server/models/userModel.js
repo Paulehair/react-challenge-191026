@@ -18,6 +18,13 @@ const userSchema = mongoose.Schema({
         unique: true,
         required: [true, 'A student must have an email address']
     },
+    description: String,
+    occupation: String,
+    company: String,
+    promotion: {
+        type: String,
+        required: [true, 'A student must have a promotion']
+    },
     role: {
         type: String,
         required: true,
@@ -33,6 +40,7 @@ const userSchema = mongoose.Schema({
         required: true
     },
     skills: [{
+        _id: false,
         skill_id: String,
         level: {
             type: String,
