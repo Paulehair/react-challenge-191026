@@ -1,0 +1,71 @@
+@import './../../global/variables';
+
+.Navigation {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    font-size: 16px;
+}
+.Navigation ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.Navigation button {
+    margin-left: auto;
+}
+
+.Navigation ul li:not(:last-child) {
+   margin-right: 34px;
+}
+
+.Navigation ul li:before {
+    font-family: "fontello";
+    display: block;
+    width: 16px;
+    margin-right: 8px;
+}
+
+.Navigation ul li {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+}
+
+.Profile:before {
+    font-size: 16px;
+    content: "\E800";
+}
+
+.Student:before {
+    font-size: 16px;
+    content: "\E801"; 
+}
+
+.Teacher:before {
+    font-size: 16px;
+    content: "\E801"; 
+}
+
+.Disconnect {
+    cursor: pointer;
+}

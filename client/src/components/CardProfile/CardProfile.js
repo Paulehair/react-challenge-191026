@@ -1,5 +1,5 @@
 import React from "react";
-import "./style.css"
+import "./style.scss"
 
 export default class CardProfile extends React.Component {
 

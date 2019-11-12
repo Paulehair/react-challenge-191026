@@ -1,5 +1,6 @@
+@import './../../global/variables';
+
 .SkillContainer {
-    color: white;
     width: 100%;
     margin-left: 78px;
     padding-top: 40px;
@@ -11,8 +12,15 @@
 }
 
 .CardSkillContainer {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
     justify-content: space-between;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
 }
