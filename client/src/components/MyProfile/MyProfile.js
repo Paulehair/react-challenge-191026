@@ -1,7 +1,7 @@
 import React from "react"
 import CardProfile from "../CardProfile/CardProfile.js"
 import CardSkill from "../CardSkill/CardSkill.js"
-import "./style.css"
+import "./style.scss"
 
 export default class MyProfile extends React.Component {
 
