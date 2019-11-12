@@ -3,7 +3,7 @@ import { Route, Switch } from "react-router-dom";
 import { Login } from "./views/Login/Login";
 import { Signup } from "./views/Signup/Signup";
 import { Dashboard } from "./views/Dashboard/Dashboard";
-import { ResetPassword } from "./views/ResetPassword/ResetPassword.js";
+import ResetPassword from "./views/ResetPassword/ResetPassword.js";
 import { PrivateRoute } from "./components/PrivateRoute";
 import './index.scss'
 
