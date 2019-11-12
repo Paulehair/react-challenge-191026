@@ -20,9 +20,9 @@ $ docker-compose up
 #### Check if data are uploaded by visiting : http://localhost:9000/api/v1/users
 
 
-### API routes
+## API routes
 
-##### Users related routes
+### Users related routes
 <strong>GET</strong> http://localhost:9000/api/v1/users/
 
 Returns all users
@@ -60,8 +60,8 @@ Request body must contain :
   - <strong>email</strong>,
   - <strong>password</strong>
 
-
-##### Skills related routes
+<br>
+### Skills related routes
 <strong>GET</strong> http://localhost:9000/api/v1/skills
 
 Returns all skills
