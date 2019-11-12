@@ -1,5 +1,7 @@
 import React from "react";
+import "./style.css"
 import API from "../../utils/API";
+import Navigation from "../Navigation/Navigation.js"
 
 export class Dashboard extends React.Component {
   disconnect = () => {
@@ -9,10 +11,9 @@ export class Dashboard extends React.Component {
   render() {
     return (
       <div className="Dashboard">
-        <h1>Dashboard</h1>
-        <button onClick={this.disconnect} block bssize="large" type="submit">
-          Se déconnecter
-        </button>
+        <div className="Header">
+          <Navigation />
+        </div>
       </div>
     );
   }
