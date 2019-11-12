@@ -5,12 +5,7 @@ const authController = require('../controllers/authController')
 
 router
     .route('/')
-    .get(userController.getAllUsers)
-
-router
-    .route('/:id')
-    .get(authController.checkLogIn, userController.getUser)
-    .patch(authController.checkLogIn, authController.protect, userController.updateUser)
+    .get(authController.checkLogIn, userController.getAllUsers)
 
 router
     .route('/signup')
@@ -24,6 +19,11 @@ router
     .route('/add-user')
     .post(authController.checkLogIn, authController.protect, userController.createUser)
     
+router
+    .route('/:id')
+    .get(authController.checkLogIn, userController.getUser)
+    .patch(authController.checkLogIn, userController.updateUser)
+
 router
     .route('/delete-user/:id')
     .delete(authController.checkLogIn, authController.protect, userController.deleteUser)

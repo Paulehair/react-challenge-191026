@@ -38,7 +38,8 @@ exports.signup = catchAsync(async (req, res) => {
 exports.login = catchAsync(async (req, res, next) => {
     const {
         password,
-        email
+        email,
+        role
     } = req.body;
 
     if (!email || !password) {
@@ -54,6 +55,10 @@ exports.login = catchAsync(async (req, res, next) => {
     if (!user || !(await user.authenticate(password, user.password))) {
         return next(new AppError('E-mail ou mot de passe incorrect'), 401);
     }
+
+    if(user.role !== role) {
+        return next(new AppError('Vous n\'avez pas sélectionné le bon profil.'))
+    }
     
     const token = signToken(user._id);
 
@@ -61,9 +66,7 @@ exports.login = catchAsync(async (req, res, next) => {
         token,
         text: "Authentification réussie",
         firstConnection: user.firstConnection,
-        data: {
-            user
-        }
+        user
     });
 })
 
@@ -75,7 +78,7 @@ exports.checkLogIn = catchAsync(async (req, res, next) => {
     }
 
     if (!token) {
-        return next(new AppError('You are not logged in'), 401);
+        return next(new AppError('Vous n\'êtes pas connecté.'), 401);
     }
 
     // Token verification
@@ -83,16 +86,16 @@ exports.checkLogIn = catchAsync(async (req, res, next) => {
 
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {
-        return next(new AppError('The user doesn\'t exist'), 401);
+        return next(new AppError('Cet utilisateur n\'existe pas.'), 401);
     }
-
+    
     req.user = currentUser;
     next();
 })
 
 exports.protect = catchAsync(async (req, res, next) => {
-    if (req.params.id.toString() !== req.user._id.toString() && (req.user.role !== 'admin' || req.user.role !== 'superadmin')) {
-        return next(new AppError('You don\'t have the permissions to execute this action.'), 401);
+    if ((req.user.role !== 'admin' && req.user.role !== 'superadmin')) {
+        return next(new AppError('Vous n\'avez pas les droits pour effectuer cette action.'), 401);
     }
 
     next()
