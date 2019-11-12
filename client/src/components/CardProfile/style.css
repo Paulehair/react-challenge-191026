@@ -1,0 +1,73 @@
+.CardProfile {
+    overflow: hidden;
+    position: relative;
+    background-color: white;
+    max-width: 390px;
+    height: 515px;
+    border-radius: 13px;
+}
+
+.Banner {
+    height: 147px;
+}
+.CardProfile .Banner .Image {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: block;
+    height: 100%;
+    background-color: blue;
+}
+
+.CardProfile .Content > * {
+    position: absolute;
+    padding: 0px 24px;
+}
+
+.CardProfile .ImgProfile {
+    padding: 0 ;
+    top: 74px;
+    height: 124px;
+    width: 124px;
+    border-radius: 50%;
+    overflow: hidden;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.CardProfile .ImgProfile .Image {
+    max-width: 100%;
+    display: block;
+    height: 100%;
+    background-color: red;
+}
+
+.CardProfile .Name {
+    top: 230px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+}
+
+.CardProfile .item > span {
+    color: #BDBDBD;
+    display: block;
+    margin-bottom: 6px;
+    font-size: 18px;
+}
+.CardProfile .item p {
+    font-size: 16px;
+}
+.CardProfile .item a {
+    color: #0B8EDC;
+    display: block;
+}
+
+.CardProfile .Promotion {
+    top: 285px;
+}
+.CardProfile .Job {
+    top: 356px;
+}
+.CardProfile .Mail {
+    top: 424px;
+}
