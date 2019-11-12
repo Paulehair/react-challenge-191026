@@ -12,7 +12,29 @@ export default class MyProfile extends React.Component {
                 <div className="DashboardContainer">
                     <CardProfile />
                     <div className="SkillContainer">
-                        
+                        <h2 className="Title">Compétences</h2>
+                        <div className="CardSkillContainer">
+                            <div className="CardSkill">
+                                <p>Programmation côté client</p>
+                                <span className="Note">C</span>
+                            </div>
+                            <div className="CardSkill">
+                                <p>Programmation côté client</p>
+                                <span className="Note">C</span>
+                            </div>
+                            <div className="CardSkill">
+                                <p>Programmation côté client</p>
+                                <span className="Note">C</span>
+                            </div>
+                            <div className="CardSkill">
+                                <p>Programmation côté client</p>
+                                <span className="Note">C</span>
+                            </div>
+                            <div className="CardSkill">
+                                <p>Programmation côté client</p>
+                                <span className="Note">C</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </>
