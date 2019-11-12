@@ -20,3 +20,10 @@ exports.getSkill = catchAsync(async (req, res) => {
         }
     })
 })
+
+exports.deleteSkills = catchAsync(async (req, res) => {
+    await Skill.deleteMany()
+    res.status(200).json({
+        status: 'success'
+    })
+})

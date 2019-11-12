@@ -1,8 +1,6 @@
 const deburr = require('lodash.deburr');
 const User = require('./../models/userModel');
 const Skill = require('./../models/skillModel');
-const mongoose = require('mongoose')
-const Schema = mongoose.Schema;
 
 const students = [
     {
@@ -347,7 +345,7 @@ const students = [
     }
 ]
 
-exports.importData = async (req, res) => {
+exports.importStudents = async (req, res, next) => {
     // Get students data from json file
     // const students = await JSON.parse(fs.readFileSync(`${__dirname}/data/data-students.json`))
 
@@ -361,28 +359,53 @@ exports.importData = async (req, res) => {
         student.password = 'admin'
     })
 
-    if(req.params.action === 'import') {
-        try {
-            await User.create(students);
-            console.log('Data successfully inserted.');
-            process.exit();
-        } catch (err) {
-            console.log(err);
-            process.exit();
-        }
-    } else if (req.params.action === 'delete') {
-        try {
-            await User.deleteMany();
-            console.log('Data successfully deleted.');
-            process.exit();
-        } catch (err) {
-            console.log(err);
-            process.exit();
-        }
+    switch(req.params.action) {
+        case 'import':
+            try {
+                await User.create(students);
+                next()
+            } catch(err) {
+                console.error(err)
+                process.exit()
+            }
+            break;
+        case 'delete-users':
+            try {
+                await User.deleteMany();
+                process.exit()
+            } catch(err) {
+                console.error(err)
+                process.exit()
+            }
+            break;
+        case 'delete-skills':
+            try {
+                await Skill.deleteMany();
+                process.exit()
+            } catch(err) {
+                console.error(err)
+                process.exit()
+            }
+            break;
+        case 'delete-all':
+            try {
+                await User.deleteMany();
+                await Skill.deleteMany();
+                process.exit()
+            } catch(err) {
+                console.error(err)
+                process.exit()
+            }
+            break;
+        default:
+            break;
     }
 }
 
-exports.importSkills = async (req, res) => {
+exports.importSkills = async (req, res, next) => {
+    if(req.params.action !== 'import') {
+        next()
+    }
     const skills = [
         {
             name: "Programmation côté client"
@@ -402,15 +425,14 @@ exports.importSkills = async (req, res) => {
     ]
     try {
         await Skill.create(skills);
-        console.log('Data successfully inserted.');
-        process.exit();
+        next()
     } catch (err) {
         console.log(err);
         process.exit();
     }
 }
 
-exports.updateData = async (req, res) => {
+exports.updateStudentSkills = async (req, res) => {
     try {
         let skills = await Skill.find()
         skills = skills.map(skill => {
@@ -420,7 +442,7 @@ exports.updateData = async (req, res) => {
             }
         })
         const skillSet = {
-            skills: skills 
+            skills
         }
         const students = await User.find({ role: { $eq: 'user' } })
         students.forEach(async student => {
@@ -430,7 +452,9 @@ exports.updateData = async (req, res) => {
                 useFindAndModify: false
             })
         })
-        process.exit();
+        setTimeout(() => {
+            process.exit()
+        }, 5000)
     } catch (err) {
         console.log(err);
         process.exit();

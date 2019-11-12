@@ -4,6 +4,7 @@ const skillController = require('./../controllers/skillController')
 router
     .route('/')
     .get(skillController.getSkills)
+    .delete(skillController.deleteSkills)
 
 router
     .route('/:id')

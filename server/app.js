@@ -35,8 +35,8 @@ app.use("/api/v1/skills", skillRouter);
  * Data import router
  * Only to be used for inserting / deleting original data
 */
-// const dataRouter = require('./routes/dataRoutes')
-// app.use("/api/v1/data",dataRouter)
+const dataRouter = require('./routes/dataRoutes')
+app.use("/api/v1/data",dataRouter)
 
 
 
