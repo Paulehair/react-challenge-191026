@@ -404,7 +404,7 @@ exports.importStudents = async (req, res, next) => {
 
 exports.importSkills = async (req, res, next) => {
     if(req.params.action !== 'import') {
-        next()
+        return next()
     }
     const skills = [
         {
