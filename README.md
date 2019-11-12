@@ -60,7 +60,7 @@ Request body must contain :
   - <strong>email</strong>,
   - <strong>password</strong>
 
-<br>
+
 ### Skills related routes
 <strong>GET</strong> http://localhost:9000/api/v1/skills
 
