@@ -18,7 +18,7 @@ export class Login extends React.Component {
     try {
       const { data } = await API.login(email, password);
       localStorage.setItem("token", data.token);
-      window.location = "/dashboard";
+      window.location = "/reset-password";
     } catch (error) {
       console.error(error);
     }
