@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom"
 import API from "../../utils/API";
-import "./style.css"
+import "./style.scss"
 
 export default class Navigation extends React.Component {
     disconnect = () => {
