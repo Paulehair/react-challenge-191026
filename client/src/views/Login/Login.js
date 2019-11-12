@@ -1,12 +1,22 @@
-import React from "react";
-import { Button, FormGroup, FormControl, ControlLabel } from "react-bootstrap";
+import React, { Component, Fragment } from "react";
+import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from "../../utils/API";
+import "./Login.scss";
+import leMonsieur from "../../assets/images/le-monsieur-in-the-sky-yeee.png"
+import leMonsieur2 from "../../assets/images/le-monsieur-solide-sur-ses-appuis.png"
 
-export class Login extends React.Component {
-  state = {
-    email: "",
-    password: ""
-  };
+export class Login extends Component {
+
+  constructor(props) {
+    super(props);
+      this.state = {
+        email: "",
+        password: "",
+        isChecked: false,
+        pwdVisibility: "password"
+      };
+  }
+
   send = async () => {
     const { email, password } = this.state;
     if (!email || email.length === 0) {
@@ -18,7 +28,7 @@ export class Login extends React.Component {
     try {
       const { data } = await API.login(email, password);
       localStorage.setItem("token", data.token);
-      window.location = "/reset-password";
+      window.location = "/dashboard";
     } catch (error) {
       console.error(error);
     }
@@ -28,31 +38,93 @@ export class Login extends React.Component {
       [event.target.id]: event.target.value
     });
   };
+
+  onSwitchChange = () => {
+    this.setState((currentState) => ({
+      isChecked: !currentState.isChecked,
+    }));
+    
+  }
+
+  changeTextColor() {
+    //Utiliser redux pour le changement de couleur au passage de la variable a true
+    if (this.state.isChecked === true) {
+      /* Background color */
+      document.querySelector('.App').style.backgroundColor = "#0B8EDC"
+      document.querySelector('.switch').style.backgroundColor = "#0B8EDC"
+       
+    } else {
+      /* Background color */
+      document.querySelector('.App').style.backgroundColor = "#F7774A"
+    }
+  }
+
+  changePwdVisibility() {    
+    if (this.state.pwdVisibility === "password") {
+        this.setState(() => ({
+          pwdVisibility: "text",
+        }));
+    } else {
+        this.setState(() => ({
+          pwdVisibility: "password",
+        }));
+    }
+  }
+
+  componentDidUpdate() {
+    this.changeTextColor()
+  }
+
   render() {
-    const { email, password } = this.state;
+    const { email, password, isChecked } = this.state;
     return (
-      <div className="Login">
-        <FormGroup controlId="email" bssize="large">
-          <ControlLabel>Email</ControlLabel>
-          <FormControl
-            autoFocus
-            type="email"
-            value={email}
-            onChange={this.handleChange}
-          />
-        </FormGroup>
-        <FormGroup controlId="password" bssize="large">
-          <ControlLabel>Password</ControlLabel>
-          <FormControl
-            value={password}
-            onChange={this.handleChange}
-            type="password"
-          />
-        </FormGroup>
-        <Button onClick={this.send} block bssize="large" type="submit">
-          Connexion
-        </Button>
-      </div>
+      <Fragment>
+      {
+        !isChecked ?         
+        <img className="le-monsieur" src={leMonsieur} alt="le monsieur in the sky yeee"></img>
+        :
+        <img className="le-monsieur2" src={leMonsieur2} alt="le monsieur solide sur ses appuis"></img>
+      }
+        <div className="main-container">
+          <p className="title">Se connecter</p>
+          <div className="switch-user">
+            <span id="student-color" style={{color: !isChecked ?  "#FFFFFF" : "#F2F2F2"}}>Étudiant</span>
+            <div className="switch__container">
+              <input onChange={this.onSwitchChange} id="switch-flat" className="switch switch--flat" type="checkbox"/>
+              <label htmlFor="switch-flat"></label>
+            </div>
+            <span id="teacher-color" style={{color: !isChecked ?  "#F2F2F2" : "#FFFFFF"}}>Intervenant</span>
+          </div>
+          <div className="login-container">
+            <div className="formGroup-container">
+              <FormGroup className="formGroup" controlId="email" bssize="large">
+                <FormControl
+                  className="inputField"
+                  placeholder = "Email"
+                  autoFocus
+                  type="email"
+                  value={email}
+                  onChange={this.handleChange}
+                />
+              </FormGroup>
+              <FormGroup controlId="password" bssize="large" className="pwd-formGroup">
+                <FormControl
+                  className="inputField inputField-pwd"
+                  placeholder="Password"
+                  value={password}
+                  onChange={this.handleChange}
+                  type={this.state.pwdVisibility}
+                />
+                <button onClick={()=>this.changePwdVisibility()} type="button" className="password-visibility" style={{'animationDelay': '0.1s'}}></button>
+              </FormGroup>
+            </div>
+            <Button className="submit-btn" onClick={this.send} block bssize="large" type="submit">
+              Se connecter
+            </Button>
+            <a href="/reset-password" className="forgot-pwd">Mot de passe oublié</a>
+          </div>
+        </div>
+      </Fragment>
     );
   }
 }
