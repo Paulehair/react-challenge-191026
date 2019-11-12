@@ -3,10 +3,18 @@
 ## Development
 You must have docker and docker-compose installed on your machine.
 
-Run <code>docker-compose build</code> then <code>docker-compose up -d</code>.
+### Follow these steps to init projet :
+```shell
+$ cd server
+$ npm install
+$ cd ../client
+$ npm install
+$ cd ..
+$ docker-compose build
+$ docker-compose up
+```
 
-Client is running on localhost:3000 and server on localhost:9000
+#### Client is running on http://localhost:3000 and server on http://localhost:9000
 
-Do not remove data-node as it contains all data for the app to work
-
-## Production
+### To populate with projet data go to : http://localhost:9000/api/v1/data/import
+### Check if data are uploaded by visiting : http://localhost:9000/api/v1/users
