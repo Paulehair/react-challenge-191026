@@ -2,12 +2,21 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 16px;
+    font-size: 18px;
+    color: white;
 }
 .Navigation ul {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+.Navigation > * {
+    color: white;
+    text-decoration: none;
+}
+.Navigation a {
+    color: white;
+    text-decoration: none;
 }
 
 .Navigation button {

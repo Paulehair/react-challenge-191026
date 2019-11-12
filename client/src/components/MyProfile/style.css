@@ -1,4 +1,5 @@
 .SkillContainer {
+    color: white;
     width: 100%;
     margin-left: 78px;
     padding-top: 40px;
@@ -17,9 +18,10 @@
 }
 
 .SkillContainer .CardSkill {
+    color: white;
     font-size: 18px;
-    background: #FAE14C;
-    border: 1px solid #D2BE41;
+    background: #FF885F;
+    border: 1px solid #DA643A;
     border-radius: 13px;
     padding: 22px 35px;
     display: flex;

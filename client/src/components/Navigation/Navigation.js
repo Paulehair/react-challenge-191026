@@ -13,8 +13,7 @@ export default class Navigation extends React.Component {
             <div className="Navigation">
                 <ul>
                     <li className="Profile"><Link to="/myprofile">Mon profile</Link></li>
-                    <li className="Student"><Link to="/studentlist">Liste des étudiants</Link></li>
-                    <li className="Teacher"><Link to="/teacherlist">Liste des intervenants</Link></li>
+                    <li className="Student"><Link to="/studentlist">Liste P2020</Link></li>
                 </ul>
                 <div className="Disconnect" onClick={this.disconnect}>
                     Se déconnecter
