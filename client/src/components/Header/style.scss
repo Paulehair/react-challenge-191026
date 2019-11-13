@@ -18,33 +18,35 @@
                 }
                 &:hover,
                 &.active {
-                    a {
+                    span {
                         opacity: 1;
                     }
                 }
                 &.active {
-                    a {
+                    span {
                         border-bottom: solid 1px $white;
                     }
                 }
                 &.Profile {
-                    a:before {
+                    span:before {
                         content: '\E800';
                         font-size: 16px;
                     }
                 }
                 &.StudentList {
-                    a:before {
+                    span:before {
                         content: '\E801';
                         font-size: 16px;
                     }
                 }
-                a {
+                span {
                     padding: 33px 0 16px;
                     display: flex;
                     justify-content: flex-start;
                     align-items: center;
                     color: $white;
+                    user-select: none;
+                    cursor: pointer;
                     opacity: 0.3;
                     transition: opacity 0.3s ease-in-out;
                     &:before {

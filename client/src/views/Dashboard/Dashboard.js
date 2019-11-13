@@ -1,21 +1,29 @@
 import React from "react";
-import API from "../../utils/API";
-import Header from "../../components/Header/Header.js"
-import MyProfile from "../../components/MyProfile/MyProfile.js"
+import Header from "../../components/Header/Header"
+import MyProfile from "../../components/MyProfile/MyProfile"
+import StudentList from "../../components/StudentList/StudentList"
 
 export class Dashboard extends React.Component {
-  disconnect = () => {
-    API.logout();
-    window.location = "/";
-  };
+  state = {
+    elToDisplay: 'profile'
+  }
+
+  handleChange = (elToDisplay) => {
+    if(this.state.elToDisplay !== elToDisplay) {
+      this.setState({
+        elToDisplay
+      })
+    }
+  }
+
   render() {
     return (
       <>
-        <Header />
+        <Header handleChange={this.handleChange} />
         <div className="Dashboard wrapper">
-          { /* faire un tab qui appelle les composants "my profile" et "stundent list" */ }
-            <MyProfile />
-            { /* Students-list */ }
+          {
+            this.state.elToDisplay === 'profile' ? <MyProfile /> : <StudentList />
+          }
         </div>
       </>
     );
