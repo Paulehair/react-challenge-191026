@@ -86,7 +86,7 @@ exports.checkLogIn = catchAsync(async (req, res, next) => {
 
     const currentUser = await User.findById(decoded.id);
     if (!currentUser) {
-        return next(new AppError('Cet utilisateur n\'existe pas.'), 401);
+        return next(new AppError('Cet utilisateur n\'existe pas ou n\'est pas connecté.'), 401);
     }
     
     req.user = currentUser;

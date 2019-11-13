@@ -25,8 +25,7 @@ exports.getSkill = catchAsync(async (req, res) => {
 exports.addSkill = catchAsync(async (req, res, next) => {
     const newSkill = await Skill.create(req.body)
     const newUserSkill = {
-        skill_id: newSkill._id,
-        level: 'C'
+        skill_id: newSkill._id
     }
     await User.updateMany({
         'role': {
