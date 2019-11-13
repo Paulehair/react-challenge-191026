@@ -44,7 +44,8 @@ const userSchema = mongoose.Schema({
         skill_id: String,
         level: {
             type: String,
-            enum: ['A', 'B', 'C', 'D', 'E', 'F', null]
+            enum: ['A', 'B', 'C', 'D', 'E', 'F'],
+            default: 'C'
         }
     }],
     firstConnection: {
