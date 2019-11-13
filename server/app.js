@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const morgan = require('morgan')
+const cors = require('cors')
 
 //On définit notre objet express nommé app
 const app = express();
@@ -13,15 +14,7 @@ const urlencodedParser = bodyParser.urlencoded({
 app.use(urlencodedParser);
 app.use(bodyParser.json());
 app.use(morgan('dev'))
-
-// CORS definition
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Credentials', true);
-    next();
-});
+app.use(cors())
 
 // Router imports
 const userRouter = require('./routes/userRoutes')
