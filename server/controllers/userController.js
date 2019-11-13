@@ -48,19 +48,23 @@ exports.updateUser = catchAsync(async (req, res, next) => {
             req.body.role = 'user'
         }
     }
-    const updatedUser = await User.findByIdAndUpdate(
-        req.params.id,
-        req.body, {
-            new: true,
-            runValidators: true
-        }
-    );
+
+    if(req.body.password) {
+        let user = await User.findOne({ _id: req.params.id })
+        user.password = req.body.password
+        user.save()
+    } else {
+        await User.findByIdAndUpdate(
+            req.params.id,
+            req.body, {
+                new: true,
+                runValidators: true
+            }
+        )
+    }
 
     res.status(200).json({
-        status: 'Success',
-        data: {
-            user: updatedUser
-        }
+        status: 'Success'
     });
 })
 
