@@ -1,1 +1,87 @@
 @import './../../global/variables';
+
+.StudentListTitle {
+    margin-top: 100px;
+    font-size: 40px;
+    color: white;
+    margin-bottom: 50px;
+}
+.SearchBar {
+    height: 65px;
+    width: 100%;
+    background: rgba(242, 242, 242, 0.15);
+    border-radius: 8px;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    margin-bottom: 43px;
+}
+
+.Input {
+    background: none;
+    border: none;
+    margin-left: 48px;
+    flex: 1;
+    &::placeholder {
+        color: white;
+        font-size: 16px;
+    }
+}
+
+.Loop {
+    &:before {
+        content: "\E803";
+        margin-right: 55px;
+        color: white;
+        font-family: "fontello";
+        align-items: center;
+    }
+}
+
+.StudentList {
+    .Table {
+        display: flex;
+        margin-bottom: 24px;
+        .CellName {
+            margin-left: 25px;
+            flex: 2;
+        }
+        .CellGroup {
+            margin-left: 25px;
+            flex: 1;
+        }
+        .CellJob {
+            margin-left: 25px;
+            flex: 1;
+        }
+    }
+    .TableCard {
+        display: flex;
+        height: 80px;
+        background-color: white;
+        border-radius: 13px;
+        .CellCardName {
+            font-size: 20px;
+            color: #4F4F4F;
+            margin-left: 25px;
+            align-self: center;
+            flex: 2;
+        }
+        .CellCardGroup {
+            font-size: 20px;
+            font-weight: 300;
+            color: #4F4F4F;
+            margin-left: 25px;
+            align-self: center;
+            flex: 1;
+        }
+        .CellCardJob {
+            font-size: 20px;
+            font-weight: 300;
+            color: #4F4F4F;
+            margin-left: 25px;
+            align-self: center;
+            flex: 1;
+        }
+    }
+}
