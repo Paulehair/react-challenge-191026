@@ -66,7 +66,9 @@ exports.login = catchAsync(async (req, res, next) => {
         token,
         text: "Authentification réussie",
         firstConnection: user.firstConnection,
-        user
+        data: {
+            user
+        }
     });
 })
 
