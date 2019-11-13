@@ -7,7 +7,7 @@ export default class MyProfile extends React.Component {
 
     render() {
         return (
-            <div className="DashboardContainer">
+            <>
                 <CardProfile />
                 <div className="SkillContainer">
                     <h2 className="Title">Compétences</h2>
@@ -19,7 +19,7 @@ export default class MyProfile extends React.Component {
                         <CardSkill />
                     </div>
                 </div>
-            </div>
+            </>
         );
     }
 }

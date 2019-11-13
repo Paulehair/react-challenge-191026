@@ -1,6 +1,7 @@
 const deburr = require('lodash.deburr');
 const User = require('./../models/userModel');
 const Skill = require('./../models/skillModel');
+const catchAsync = require('./../services/catchAsync')
 
 const students = [
     {
@@ -342,13 +343,33 @@ const students = [
     {
         "firstName": "Enzo",
         "lastName": "ZUNIGA"
+    },
+    {
+        "firstName": "Marie",
+        "lastName": "THIBORD",
+        "role": "superadmin"
     }
 ]
 
-exports.importStudents = async (req, res, next) => {
-    // Get students data from json file
-    // const students = await JSON.parse(fs.readFileSync(`${__dirname}/data/data-students.json`))
+const skills = [
+    {
+        name: "Programmation côté client"
+    },
+    {
+        name: "Programmation côté serveur"
+    },
+    {
+        name: "Design UI"
+    },
+    {
+        name: "UX"
+    },
+    {
+        name: "Gestion de projet"
+    }
+]
 
+exports.importStudents = catchAsync(async (req, res, next) => {
     // Loop over student to generate email and add temporary password 
     students.forEach(student => {
         const {
@@ -357,106 +378,50 @@ exports.importStudents = async (req, res, next) => {
         } = student
         student.email = `${deburr(firstName)}.${deburr(lastName.split(' ').join(''))}@hetic.net`.toLowerCase()
         student.password = 'admin'
+        student.promotion = 'P2020'
     })
+    await User.create(students)
+    console.log('Users successfully inserted.')
+    return next()
+})
 
-    switch(req.params.action) {
-        case 'import':
-            try {
-                await User.create(students);
-                next()
-            } catch(err) {
-                console.error(err)
-                process.exit()
-            }
-            break;
-        case 'delete-users':
-            try {
-                await User.deleteMany();
-                process.exit()
-            } catch(err) {
-                console.error(err)
-                process.exit()
-            }
-            break;
-        case 'delete-skills':
-            try {
-                await Skill.deleteMany();
-                process.exit()
-            } catch(err) {
-                console.error(err)
-                process.exit()
-            }
-            break;
-        case 'delete-all':
-            try {
-                await User.deleteMany();
-                await Skill.deleteMany();
-                process.exit()
-            } catch(err) {
-                console.error(err)
-                process.exit()
-            }
-            break;
-        default:
-            break;
-    }
-}
-
-exports.importSkills = async (req, res, next) => {
-    if(req.params.action !== 'import') {
+exports.importSkills = catchAsync(async (req, res, next) => {
+    if (req.params.action !== 'import') {
         return next()
     }
-    const skills = [
-        {
-            name: "Programmation côté client"
-        },
-        {
-            name: "Programmation côté serveur"
-        },
-        {
-            name: "Design UI"
-        },
-        {
-            name: "UX"
-        },
-        {
-            name: "Gestion de projet"
-        }
-    ]
-    try {
-        await Skill.create(skills);
-        next()
-    } catch (err) {
-        console.log(err);
-        process.exit();
-    }
-}
+    await Skill.create(skills);
+    console.log('Skills successfully inserted.')
+    return next()
+})
 
-exports.updateStudentSkills = async (req, res) => {
-    try {
-        let skills = await Skill.find()
-        skills = skills.map(skill => {
-            return {
-                skill_id: skill._id,
-                level: undefined
-            }
-        })
-        const skillSet = {
-            skills
+exports.updateStudentSkills = catchAsync(async (req, res, next) => {
+    const skills = await Skill.find()
+    const skillSet = skills.map(skill => {
+        return {
+            skill_id: skill._id,
+            level: 'C'
         }
-        const students = await User.find({ role: { $eq: 'user' } })
-        students.forEach(async student => {
-            await User.findByIdAndUpdate(student._id, skillSet, {
-                new: true,
-                runValidators: true,
-                useFindAndModify: false
-            })
-        })
-        setTimeout(() => {
-            process.exit()
-        }, 5000)
-    } catch (err) {
-        console.log(err);
-        process.exit();
-    }
-}
+    })
+    await User.updateMany({
+        'role': {
+            $eq: 'user'
+        }
+    }, {'$set':
+            {
+                "skills": skillSet
+            }
+        }, {
+        new: true,
+        runValidators: true,
+        useFindAndModify: false
+    })
+    console.log('Users successfully updated. | Data import process complete.')
+    process.exit()
+})
+
+exports.deleteAll = catchAsync(async (req, res, next) => {
+    await User.deleteMany()
+    await Skill.deleteMany()
+    console.log('Data successfully deleted.')
+    process.exit()
+})

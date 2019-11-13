@@ -15,15 +15,15 @@ export default class CardProfile extends React.Component {
                             <span className="LastName">Beaufort</span>
                         </p>
                     </div>
-                    <div className="Promotion item">
+                    <div className="Promotion Item">
                         <span>Promotion</span>
                         <p><span>WEB 3</span> - <span>P2020</span> <span>Groupe 2</span></p>
                     </div>
-                    <div className="Job item">
+                    <div className="Job Item">
                         <span>Poste</span>
                         <p><span>Designer UI</span> chez <span>Havas</span></p>
                     </div>
-                    <div className="Mail item">
+                    <div className="Mail Item">
                         <span>Adresse mail</span>
                         <a href="#">JeanneBeaufort@hetic.net</a>
                     </div>

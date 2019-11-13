@@ -11,12 +11,12 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-          <Switch>
-            <Route exact path="/" component={Login} />
-            <Route exact path="/signup" component={Signup} />
-            <Route exact path="/reset-password" component={ResetPassword} />
-            <PrivateRoute path="/dashboard" component={Dashboard} />
-          </Switch>
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/signup" component={Signup} />
+          <Route exact path="/reset-password" component={ResetPassword} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+        </Switch>
       </div>
     );
   }
