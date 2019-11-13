@@ -1,18 +1,18 @@
 import React, { Component, Fragment } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from "../../utils/API";
+import { connect } from "react-redux";
 import "./Login.scss";
 import leMonsieur from "../../assets/images/le-monsieur-in-the-sky-yeee.png"
 import leMonsieur2 from "../../assets/images/le-monsieur-solide-sur-ses-appuis.png"
 
-export class Login extends Component {
+class Login extends Component {
 
   constructor(props) {
     super(props);
       this.state = {
         email: "",
         password: "",
-        isChecked: false,
         pwdVisibility: "password"
       };
   }
@@ -33,6 +33,7 @@ export class Login extends Component {
       console.error(error);
     }
   };
+  
   handleChange = (event) => {
     this.setState({
       [event.target.id]: event.target.value
@@ -40,18 +41,14 @@ export class Login extends Component {
   };
 
   onSwitchChange = () => {
-    this.setState((currentState) => ({
-      isChecked: !currentState.isChecked,
-    }));
-    
+    this.props.set_checked(!this.props.isChecked)
   }
 
   changeTextColor() {
     //Utiliser redux pour le changement de couleur au passage de la variable a true
-    if (this.state.isChecked === true) {
+    if (this.props.isChecked === true) {
       /* Background color */
       document.querySelector('.App').style.backgroundColor = "#0B8EDC"
-      document.querySelector('.switch').style.backgroundColor = "#0B8EDC"
        
     } else {
       /* Background color */
@@ -76,7 +73,8 @@ export class Login extends Component {
   }
 
   render() {
-    const { email, password, isChecked } = this.state;
+    const { email, password} = this.state;
+    let isChecked = this.props.isChecked
     return (
       <Fragment>
       {
@@ -90,8 +88,8 @@ export class Login extends Component {
           <div className="switch-user">
             <span id="student-color" style={{color: !isChecked ?  "#FFFFFF" : "#F2F2F2"}}>Étudiant</span>
             <div className="switch__container">
-              <input onChange={this.onSwitchChange} id="switch-flat" className="switch switch--flat" type="checkbox"/>
-              <label htmlFor="switch-flat"></label>
+              <input onChange={this.onSwitchChange} id="switch-flat" className={`switch switch--flat ${this.props.isChecked === false ? 'student' : 'teacher' }`} type="checkbox"/>
+              <label className={`${this.props.isChecked === false ? 'student' : 'teacher' }`} htmlFor="switch-flat"></label>
             </div>
             <span id="teacher-color" style={{color: !isChecked ?  "#F2F2F2" : "#FFFFFF"}}>Intervenant</span>
           </div>
@@ -128,3 +126,21 @@ export class Login extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {  
+  return {
+    isChecked: state.isChecked
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    set_checked: (isChecked) => {
+      dispatch({
+        type: 'SET_CHECKED',
+        value: isChecked
+      })
+    },
+  }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

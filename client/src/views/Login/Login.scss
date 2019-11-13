@@ -69,6 +69,16 @@
             background-color: #ffffff;
             border-radius: 60px;
             transition: background 0.4s;
+            &.student {
+                &:before {
+                    background-color: #F7774A;
+                }
+            }
+            &.teacher {
+                &:before {
+                    background-color: #0B8EDC;
+                }
+            }
         }
 
         .switch--flat+label:before,
@@ -83,7 +93,6 @@
             left: 1px;
             bottom: 1px;
             right: 1px;
-            background-color: #F7774A;
             border-radius: 60px;
             transition: background 0.4s;
         }
