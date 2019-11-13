@@ -1,4 +1,48 @@
 @import './../../global/variables';
+body{
+  background-color:#eee;
+}
+
+#app{
+  border-radius:3px;
+  border: 1px solid #e5e5e5;
+  margin:15px;
+  background-color:white;
+}
+
+.tab{
+  //min-height:50px;
+  width:100%;
+//   padding:25px;
+  font-family:sans-serif;
+  color:#444;
+}
+
+ul.inline{
+  list-style:none;
+  padding: 0;
+  margin-bottom:0;
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+  -webkit-margin-start: 0px;
+  -webkit-margin-end: 0px;
+  -webkit-padding-start: 0px;
+  li{
+    display:inline-block;
+    margin-left:0;
+    padding:10px;
+    border-bottom:2px solid #eee;
+    transition: all .5s;
+    font-family:sans-serif;
+    font-weight:300;
+    cursor:pointer;
+    color:#aaa;
+    &.selected{
+      border-bottom:2px solid #337ab7;
+      color:#444;
+    }
+  }
+}
 
 .Navigation {
     display: -webkit-box;
@@ -13,15 +57,8 @@
     font-size: 16px;
 }
 .Navigation ul {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: start;
-        -ms-flex-pack: start;
-            justify-content: flex-start;
-    -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    justify-content: flex-start;
 }
 
 .Navigation button {

@@ -16,7 +16,7 @@ export class Dashboard extends React.Component {
         </div>
 
         { /* faire un tab qui appelle les composants "my profile" et "stundent list" */ }
-          <MyProfile />
+          {/* <MyProfile /> */}
       </div>
     );
   }
