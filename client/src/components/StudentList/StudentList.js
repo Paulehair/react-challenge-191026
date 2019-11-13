@@ -5,7 +5,7 @@ export default class Studentlist extends React.Component {
 
     render() {
         return (
-            <div className="MyProfile">
+            <div className="StudentListComponent">
                 <div className="StudentListTitle">
                     Liste 2020
                 </div>
