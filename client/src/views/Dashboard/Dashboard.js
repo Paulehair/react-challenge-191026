@@ -1,6 +1,6 @@
 import React from "react";
 import API from "../../utils/API";
-import Navigation from "../../components/Navigation/Navigation.js"
+import Header from "../../components/Header/Header.js"
 import MyProfile from "../../components/MyProfile/MyProfile.js"
 
 export class Dashboard extends React.Component {
@@ -10,14 +10,14 @@ export class Dashboard extends React.Component {
   };
   render() {
     return (
-      <div className="Dashboard">
-        <div className="Header">
-          <Navigation />
+      <>
+        <Header />
+        <div className="Dashboard wrapper">
+          { /* faire un tab qui appelle les composants "my profile" et "stundent list" */ }
+            <MyProfile />
+            { /* Students-list */ }
         </div>
-
-        { /* faire un tab qui appelle les composants "my profile" et "stundent list" */ }
-          <MyProfile />
-      </div>
+      </>
     );
   }
 }

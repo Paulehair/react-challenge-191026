@@ -1,16 +1,20 @@
+@import './../../global/variables';
+
 .CardSkill {
-    color: white;
-    font-size: 18px;
-    background: #FF885F;
-    border: 1px solid #DA643A;
-    border-radius: 13px;
-    padding: 22px 35px;
+    padding: 20px 30px;
+    margin-bottom: 16px;
+    width: calc(50% - 20px);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: calc(45% - 36px);
-    margin-bottom: 16px;
-}
-.CardSkill .Note {
-    font-size: 40px;
+    background: #FF885F;
+    font-size: 18px;
+    font-weight: 600;
+    color: $white;
+    border: 1px solid #DA643A;
+    border-radius: 13px;
+    .Note {
+        margin-left: 20px;
+        font-size: 40px;
+    }
 }

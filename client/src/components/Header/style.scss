@@ -1,0 +1,65 @@
+@import './../../global/variables';
+
+.Header {
+    .Navigation {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 18px;
+        color: $white;
+        border-bottom: 1px solid rgba($color: $white, $alpha: 0.3);
+        .NavigationItems {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .NavigationItem {
+                &:not(:last-child) {
+                    margin-right: 34px;
+                }
+                &:hover,
+                &.active {
+                    a {
+                        opacity: 1;
+                    }
+                }
+                &.active {
+                    a {
+                        border-bottom: solid 1px $white;
+                    }
+                }
+                &.Profile {
+                    a:before {
+                        content: '\E800';
+                        font-size: 16px;
+                    }
+                }
+                &.StudentList {
+                    a:before {
+                        content: '\E801';
+                        font-size: 16px;
+                    }
+                }
+                a {
+                    padding: 33px 0 16px;
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    color: $white;
+                    opacity: 0.3;
+                    transition: opacity 0.3s ease-in-out;
+                    &:before {
+                        display: block;
+                        font-family: 'fontello';
+                        width: 16px;
+                        margin-right: 8px;
+                    }
+                }
+            }
+        }
+        .Disconnect {
+            padding: 33px 0 16px;
+            margin-left: auto;
+            color: $white;
+        }
+    }
+}
