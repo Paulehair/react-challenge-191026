@@ -10,29 +10,25 @@
         url("./assets/fonts/fontello/fontello.svg") format("svg");
 }
 
-.App {
-    background-color: #F7774A;
-    padding: 36px 40px;
+body {
     font-family: neue-haas-grotesk-display, sans-serif;
     font-style: normal;
-    height: 100vh;
+    color: $darkgrey;
+    background: $bg-student;
 }
 
-div {
-    color: #333333;
+.App {
+    position: relative;
+    padding: 0 40px;
 }
 
-.DashboardContainer {
+.wrapper {
+    max-width: 1250px;
+}
+
+.Dashboard {
     padding-top: 65px;
-    padding-right: 117px;
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -webkit-box-pack: start;
-    -ms-flex-pack: start;
     justify-content: flex-start;
-    -webkit-box-align: start;
-    -ms-flex-align: start;
     align-items: flex-start;
 }
-
