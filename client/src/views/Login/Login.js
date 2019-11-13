@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import "./Login.scss";
 import leMonsieur from "../../assets/images/le-monsieur-in-the-sky-yeee.png"
 import leMonsieur2 from "../../assets/images/le-monsieur-solide-sur-ses-appuis.png"
+import logo from "../../assets/images/LOGO.png"
 
 class Login extends Component {
 
@@ -56,7 +57,7 @@ class Login extends Component {
     }
   }
 
-  changePwdVisibility() {    
+  changePwdVisibility = () => {    
     if (this.state.pwdVisibility === "password") {
         this.setState(() => ({
           pwdVisibility: "text",
@@ -84,42 +85,47 @@ class Login extends Component {
         <img className="le-monsieur2" src={leMonsieur2} alt="le monsieur solide sur ses appuis"></img>
       }
         <div className="main-container">
-          <p className="title">Se connecter</p>
-          <div className="switch-user">
-            <span id="student-color" style={{color: !isChecked ?  "#FFFFFF" : "#F2F2F2"}}>Étudiant</span>
-            <div className="switch__container">
-              <input onChange={this.onSwitchChange} id="switch-flat" className={`switch switch--flat ${this.props.isChecked === false ? 'student' : 'teacher' }`} type="checkbox"/>
-              <label className={`${this.props.isChecked === false ? 'student' : 'teacher' }`} htmlFor="switch-flat"></label>
+          <div className="auth-container">
+            <div className="logo-container">
+              <img src={logo} alt="logo"></img>
             </div>
-            <span id="teacher-color" style={{color: !isChecked ?  "#F2F2F2" : "#FFFFFF"}}>Intervenant</span>
-          </div>
-          <div className="login-container">
-            <div className="formGroup-container">
-              <FormGroup className="formGroup" controlId="email" bssize="large">
-                <FormControl
-                  className="inputField"
-                  placeholder = "Email"
-                  autoFocus
-                  type="email"
-                  value={email}
-                  onChange={this.handleChange}
-                />
-              </FormGroup>
-              <FormGroup controlId="password" bssize="large" className="pwd-formGroup">
-                <FormControl
-                  className="inputField inputField-pwd"
-                  placeholder="Password"
-                  value={password}
-                  onChange={this.handleChange}
-                  type={this.state.pwdVisibility}
-                />
-                <button onClick={()=>this.changePwdVisibility()} type="button" className="password-visibility" style={{'animationDelay': '0.1s'}}></button>
-              </FormGroup>
+            <p className="title">Se connecter</p>
+            <div className="switch-user">
+              <span id="student-color" style={{color: !isChecked ?  "#FFFFFF" : "#F2F2F2", opacity: !isChecked ? "1" : "0.7"}}>Étudiant</span>
+              <div className="switch__container">
+                <input onChange={this.onSwitchChange} id="switch-flat" className={`switch switch--flat ${this.props.isChecked === false ? 'student' : 'teacher' }`} type="checkbox"/>
+                <label className={`${this.props.isChecked === false ? 'student' : 'teacher' }`} htmlFor="switch-flat"></label>
+              </div>
+              <span id="teacher-color" style={{color: !isChecked ?  "#F2F2F2" : "#FFFFFF", opacity: !isChecked ? "0.7" : "1"}}>Intervenant</span>
             </div>
-            <Button className="submit-btn" onClick={this.send} block bssize="large" type="submit">
-              Se connecter
-            </Button>
-            <a href="/reset-password" className="forgot-pwd">Mot de passe oublié</a>
+            <div className="login-container">
+              <div className="formGroup-container">
+                <FormGroup className="formGroup" controlId="email" bssize="large">
+                  <FormControl
+                    className="inputField"
+                    placeholder = "Email"
+                    autoFocus
+                    type="email"
+                    value={email}
+                    onChange={this.handleChange}
+                  />
+                </FormGroup>
+                <FormGroup controlId="password" bssize="large" className="pwd-formGroup">
+                  <FormControl
+                    className="inputField inputField-pwd"
+                    placeholder="Password"
+                    value={password}
+                    onChange={this.handleChange}
+                    type={this.state.pwdVisibility}
+                  />
+                  <button onClick={this.changePwdVisibility} type="button" className={`password-visibility ${this.state.pwdVisibility === "password" ? 'invisible' : 'visible' }`} style={{'animationDelay': '0.1s'}}></button>
+                </FormGroup>
+              </div>
+              <Button className="submit-btn" onClick={this.send} block bssize="large" type="submit">
+                Se connecter
+              </Button>
+              <a href="/reset-password" className="forgot-pwd">Mot de passe oublié</a>
+            </div>
           </div>
         </div>
       </Fragment>
