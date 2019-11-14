@@ -1,18 +1,36 @@
 @import './../../global/variables';
 
 .Header {
+    padding-top: 70px;
     .Navigation {
+        position: fixed;
+        top: 0;
+        width: calc(100% - 80px);
+        max-width: 1360px;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-        justify-content: space-between;
-        align-items: center;
+        -webkit-box-pack: justify;
+            -ms-flex-pack: justify;
+                justify-content: space-between;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
         font-size: 18px;
         font-weight: 600;
         color: $white;
+        background-color: #F7774A;
         border-bottom: 1px solid rgba($color: $white, $alpha: 0.3);
         .NavigationItems {
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: flex-start;
-            align-items: center;
+            -webkit-box-pack: start;
+                -ms-flex-pack: start;
+                    justify-content: flex-start;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             .NavigationItem {
                 &:not(:last-child) {
                     margin-right: 34px;
@@ -42,13 +60,23 @@
                 }
                 span {
                     padding: 33px 0 16px;
+                    display: -webkit-box;
+                    display: -ms-flexbox;
                     display: flex;
-                    justify-content: flex-start;
-                    align-items: center;
+                    -webkit-box-pack: start;
+                        -ms-flex-pack: start;
+                            justify-content: flex-start;
+                    -webkit-box-align: center;
+                        -ms-flex-align: center;
+                            align-items: center;
                     color: $white;
-                    user-select: none;
+                    -webkit-user-select: none;
+                       -moz-user-select: none;
+                        -ms-user-select: none;
+                            user-select: none;
                     cursor: pointer;
                     opacity: 0.3;
+                    -webkit-transition: opacity 0.3s ease-in-out;
                     transition: opacity 0.3s ease-in-out;
                     &:before {
                         display: block;

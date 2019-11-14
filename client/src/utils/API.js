@@ -1,11 +1,4 @@
 import axios from "axios";
-const dotenv = require('dotenv');
-
-// dotenv.config({
-//   path: '../../../config.env'
-// })
-// const port = process.env.PORT;
-// console.log("port", port);
 
 const headers = {
     'Content-Type': 'application/json'
@@ -24,10 +17,11 @@ export default {
             }, { headers }
         )
         localStorage.setItem("token", response.data.token)
-        headers.Authorization = response.data.token
+        headers.Authorization = localStorage.getItem('token')
         return response.data
     },
     getAllUsers() {
+        headers.Authorization = localStorage.getItem('token')
         return axios.get(`${URL}/users`, { 
             headers
         })
@@ -42,8 +36,9 @@ export default {
             headers
         })
     },
-    updateUser(id) {
-        return axios.patch(`${URL}/users/${id}`, {
+    updateUser(id, body) {
+        headers.Authorization = localStorage.getItem('token')
+        return axios.patch(`${URL}/users/${id}`, body, {
             headers
         })
     },

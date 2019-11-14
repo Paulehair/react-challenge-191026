@@ -63,12 +63,8 @@ exports.login = catchAsync(async (req, res, next) => {
     const token = signToken(user._id);
 
     res.status(200).json({
-        token,
-        text: "Authentification réussie",
-        firstConnection: user.firstConnection,
-        data: {
-            user
-        }
+        status: 'success',
+        token
     });
 })
 

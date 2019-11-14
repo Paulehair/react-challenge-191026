@@ -1,6 +1,20 @@
 import React from "react";
 import "./style.scss"
 
-export default ({data}) => {
-    return <div className="CardSkill"><p>{data.skill}</p><span className="Note">{data.note}</span></div>
-}
+const options = ['A', 'B', 'C', 'D', 'E', 'F']
+
+export default ({ skill, editMode }) => (
+    <div className="CardSkill">
+        <p>{skill.name}</p>
+        {
+            editMode ? (
+                <select name={skill.name} className="editSkill" data-skillid={skill.skill_id} defaultValue={options.find(option => option === skill.level)}>
+                    {
+                        options.map((option, i) => <option key={i} value={option}>{option}</option>)
+                    }
+                </select>
+            )
+            : <span className="Note">{skill.level}</span>
+        }
+    </div>
+)

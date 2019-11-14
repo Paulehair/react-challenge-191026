@@ -17,12 +17,25 @@ class Tabs extends React.Component {
         ]
     }
     
+    handleChange = (id, elemId) => {
+        if(this.state.selected !== id) {
+            this.setState({
+                selected: id
+            })
+        }
+        this.props.handleChange(elemId)
+    }
+
     render() {
         return (
             <ul className="NavigationItems">
-                {this.state.tabs.map((elem, index) => {
-                    return <li className={`${index == this.state.selected ? 'active ' : ''}NavigationItem ${elem.nameClass}`} key={index} onClick={() => this.props.handleChange(elem.id)}><span>{elem.text}</span></li>
-                })}
+            {
+                this.props.role !== 'user' ? <li className='active StudentList NavigationItem'>Liste des étudiants</li>
+                : this.state.tabs.map((elem, index) => {
+                    return <li className={`${index === this.state.selected ? 'active ' : ''}NavigationItem ${elem.nameClass}`} key={index} onClick={() => this.handleChange(index, elem.id)}><span>{elem.text}</span></li>
+                })
+            }
+                
             </ul>
         )
     }

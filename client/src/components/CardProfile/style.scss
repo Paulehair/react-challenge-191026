@@ -4,19 +4,20 @@
     overflow: hidden;
     position: relative;
     background-color: white;
-    max-width: 390px;
+    max-width: 430px;
     height: 515px;
     border-radius: 13px;
     width: 100%;
     .Banner {
         height: 147px;
+        border: solid 5px #aaa;
         .Image {
             background-size: cover;
             background-position: center center;
             background-repeat: no-repeat;
             display: block;
             height: 100%;
-            background-color: blue;
+            background-color: #aaa;
         }
     }
     .Content {
@@ -33,12 +34,16 @@
             border-radius: 50%;
             overflow: hidden;
             left: 50%;
-            transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+                    transform: translateX(-50%);
             .Image {
                 display: block;
                 height: 100%;
                 max-width: 100%;
-                background-color: red;
+                background-image: url("../../assets/images/hetic_logo.png");
+                background-size: cover;
+                background-position: center center;
+                background-repeat: no-repeat;
             }
         }
         .Name {
@@ -64,9 +69,26 @@
             }
             &.Job {
                 top: 356px;
+                p.edit {
+                    display: -webkit-box;
+                    display: -ms-flexbox;
+                    display: flex;
+                    -webkit-box-pack: justify;
+                        -ms-flex-pack: justify;
+                            justify-content: space-between;
+                }
             }
             &.Mail {
                 top: 424px;
+            }
+        }
+        input {
+            background-color: #F2F2F2;
+            border-radius: 8px;
+            height: 40px;
+            padding: 5px 10px;
+            &:not(:last-child) {
+                margin-right: 10px;
             }
         }
     }

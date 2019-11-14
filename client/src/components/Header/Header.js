@@ -6,8 +6,8 @@ import "./style.scss"
 const Header = (props) => (
     <div className="Header wrapper">
         <nav className="Navigation">
-            <Tabs handleChange={props.handleChange} />
-            <a href="#" className="Disconnect" onClick={API.logout}>Se déconnecter</a>
+            <Tabs role={props.role} handleChange={props.handleChange} />
+            <a href="/" className="Disconnect" onClick={API.logout}>Se déconnecter</a>
         </nav>
     </div>
 )
