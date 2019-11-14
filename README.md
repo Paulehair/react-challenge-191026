@@ -1,5 +1,14 @@
 # react-challenge-191026
 
+## Team
+<strong>Paule Herman</strong> - DevOps & chef de projet
+<strong>Marion Ott</strong> - Développeuse Back
+<strong>Simon Soleau</strong> - Développeur Front
+<strong>Anthony Thuillez</strong> - Développeur Front
+<strong>Hector Travaillé</strong> - UX/UI designer
+<strong>Mehdi Verfaillie</strong> - Développeur Front
+<strong>Marc Ye</strong> - UX/UI designer
+
 ## Development
 You must have docker and docker-compose installed on your machine.
 
