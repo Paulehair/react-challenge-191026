@@ -3,29 +3,6 @@ import CardProfile from "../CardProfile/CardProfile.js"
 import CardSkill from "../CardSkill/CardSkill.js"
 import "./style.scss"
 
-const skills = [
-    {
-        skill: "Programmation côté client",
-        note: "D"
-    },
-    {
-        skill: "Programmation côté serveur",
-        note: "E"
-    },
-    {
-        skill: "Design UI",
-        note: "A"
-    },
-    {
-        skill: "Design UX",
-        note: "B"
-    },
-    {
-        skill: "Gestion de projet",
-        note: "C"
-    }
-]
-
 export default class MyProfile extends React.Component {
 
     state = {
@@ -41,7 +18,8 @@ export default class MyProfile extends React.Component {
     render() {
         return (
             <>
-                <CardProfile />
+                { !this.props.editable && <button onClick={this.props.backtrace}>Retour</button> }
+                <CardProfile user={this.props.user} />
                 <div className="SkillContainer">
                     <h2 className="Title">Compétences</h2>
                     <div className="EditContainer">
@@ -57,9 +35,7 @@ export default class MyProfile extends React.Component {
                     </div>
                     <div className="CardSkillContainer">
                         {
-                            skills.map(
-                                (data, i) => <CardSkill key={i} data={data} />
-                            )
+                            this.props.user.skills.map((skill, i) => <CardSkill key={i} skill={skill} /> )
                         }
                     </div>
                 </div>

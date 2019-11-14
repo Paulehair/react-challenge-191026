@@ -7,7 +7,7 @@ const Header = (props) => (
     <div className="Header wrapper">
         <nav className="Navigation">
             <Tabs handleChange={props.handleChange} />
-            <a href="#" className="Disconnect" onClick={API.logout}>Se déconnecter</a>
+            <a href="/" className="Disconnect" onClick={API.logout}>Se déconnecter</a>
         </nav>
     </div>
 )

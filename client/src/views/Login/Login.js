@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
 import API from "../../utils/API";
-import { connect } from "react-redux";
 import "./Login.scss";
 import leMonsieur from "../../assets/images/le-monsieur-in-the-sky-yeee.png"
 import leMonsieur2 from "../../assets/images/le-monsieur-solide-sur-ses-appuis.png"
 import logo from "../../assets/images/LOGO.png"
+import { connect } from "react-redux";
 
 class Login extends Component {
 
@@ -15,7 +15,8 @@ class Login extends Component {
         email: "",
         password: "",
         pwdVisibility: "password"
-      };
+      }
+      this.role = 'user'
   }
 
   send = async () => {
@@ -27,12 +28,13 @@ class Login extends Component {
       return;
     }
     try {
-      const response = await API.login(email, password, 'user');
-      localStorage.setItem("token", response.token);
-      window.location = "/dashboard";
-    } catch (error) {
-      console.error(error);
+        await API.login(email, password, this.role);
+        window.location = '/dashboard'
+
+    } catch(err) {
+        //TODO: ERROR FEEDBACK
     }
+    
   };
   
   handleChange = (event) => {
@@ -43,6 +45,7 @@ class Login extends Component {
 
   onSwitchChange = () => {
     this.props.set_checked(!this.props.isChecked)
+    this.role = this.props.isChecked == true ? 'user' : 'admin'
   }
 
   changeTextColor() {
@@ -133,20 +136,21 @@ class Login extends Component {
   }
 }
 
-const mapStateToProps = (state) => {  
-  return {
-    isChecked: state.isChecked
-  }
+const mapStateToProps = (state) => {
+    return {
+        isChecked: state.isChecked
+    }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    set_checked: (isChecked) => {
-      dispatch({
-        type: 'SET_CHECKED',
-        value: isChecked
-      })
-    },
-  }
+    return {
+        set_checked: (isChecked) => {
+            dispatch({
+                type: 'SET_CHECKED',
+                value: isChecked
+            })
+        }
+    }
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

@@ -21,7 +21,7 @@ class Tabs extends React.Component {
         return (
             <ul className="NavigationItems">
                 {this.state.tabs.map((elem, index) => {
-                    return <li className={`${index == this.state.selected ? 'active ' : ''}NavigationItem ${elem.nameClass}`} key={index} onClick={() => this.props.handleChange(elem.id)}><span>{elem.text}</span></li>
+                    return <li className={`${index === this.state.selected ? 'active ' : ''}NavigationItem ${elem.nameClass}`} key={index} onClick={() => this.props.handleChange(elem.id)}><span>{elem.text}</span></li>
                 })}
             </ul>
         )

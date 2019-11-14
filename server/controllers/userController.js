@@ -1,4 +1,5 @@
 const User = require('./../models/userModel')
+const Skill = require('./../models/skillModel')
 const catchAsync = require('./../services/catchAsync')
 const AppError = require("../services/appError")
 
@@ -13,12 +14,14 @@ exports.getAllUsers = catchAsync(async (req, res) => {
         .select('-password -role -firstConnection')
 
     const currentUser = await User.find(req.user._id).select('-role')
-    
+    const skills = await Skill.find()
+
     res.status(200).json({
         status: 'success',
         data: {
             users,
-            currentUser
+            currentUser,
+            skills
         }
     })
 })

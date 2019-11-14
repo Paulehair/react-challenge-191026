@@ -416,7 +416,7 @@ exports.updateStudentSkills = catchAsync(async (req, res, next) => {
         useFindAndModify: false
     })
     console.log('Users successfully updated. | Data import process complete.')
-    process.exit()
+    // process.exit()
 })
 
 exports.deleteAll = catchAsync(async (req, res, next) => {
