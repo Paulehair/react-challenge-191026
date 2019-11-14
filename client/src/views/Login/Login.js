@@ -45,7 +45,7 @@ class Login extends Component {
 
   onSwitchChange = () => {
     this.props.set_checked(!this.props.isChecked)
-    this.role = this.props.isChecked == true ? 'user' : 'admin'
+    this.role = this.props.isChecked == true ? 'user' : 'superadmin'
   }
 
   changeTextColor() {

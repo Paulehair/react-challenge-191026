@@ -11,7 +11,9 @@ export default ({user, onClick}) => (
             Groupe 2
         </div>
         <div className="CellCardJob">
-            { user.job ? user.job : 'Non renseigné'}
+            {
+                user.occupation ? user.occupation : 'Non renseigné'
+            }
         </div>
     </div>
 )

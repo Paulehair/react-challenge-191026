@@ -33,7 +33,8 @@ class Dashboard extends React.Component {
           users: data.users,
           currentUser: data.currentUser[0],
           skills: data.skills,
-          isLoggedIn: true
+          isLoggedIn: true,
+          role: data.currentUser[0].role
       })
   }
 
@@ -49,14 +50,15 @@ class Dashboard extends React.Component {
     return (
         this.state.users ? (
             <>
-                <Header handleChange={this.handleChange} />
+                <Header role={this.state.role} handleChange={this.handleChange} />
                 <div className="Dashboard wrapper">
                 {
-                    this.state.elToDisplay === 'profile' ? <MyProfile editable={true} user={this.state.currentUser} /> : <StudentList users={this.state.users} />
+                    this.state.role !== 'user' ? <StudentList role={this.state.role} users={this.state.users} />
+                    : this.state.elToDisplay === 'profile' ? <MyProfile editable={true} user={this.state.currentUser} /> : <StudentList role={this.state.role} users={this.state.users} />
                 }
                 </div>
             </>
-        ) : <div>!!!!!!CREATE LOADER PLEASE</div>
+        ) : <div></div>
       
     );
   }

@@ -23,6 +23,7 @@ class StudentList extends React.Component {
     }
 
     render() {
+        const isEditable = (this.props.role === 'admin' || this.props.role === 'superadmin') ? true : false
         return(
             this.state.displayList ? (
                 <div className="StudentListComponent">
@@ -50,7 +51,7 @@ class StudentList extends React.Component {
                         }
                     </div>
                 </div>
-            ) : <MyProfile user={this.state.user} editable={false} backtrace={this.backtrace} />
+            ) : <MyProfile user={this.state.user} editable={isEditable} backtrace={this.backtrace} />
         )
     }
 

@@ -4,9 +4,15 @@
     padding: 20px 30px;
     margin-bottom: 16px;
     width: calc(50% - 20px);
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     background: #FF885F;
     font-size: 18px;
     line-height: 24px;
@@ -20,5 +26,10 @@
     .Note {
         margin-left: 20px;
         font-size: 40px;
+    }
+    select {
+        color: $darkgrey;
+        height: 40px;
+        width: 50px;
     }
 }

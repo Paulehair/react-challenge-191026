@@ -377,6 +377,9 @@ exports.importStudents = catchAsync(async (req, res, next) => {
             lastName
         } = student
         student.email = `${deburr(firstName)}.${deburr(lastName.split(' ').join(''))}@hetic.net`.toLowerCase()
+        student.occupation = ""
+        student.company = ""
+        student.description = ""
         student.password = 'admin'
         student.promotion = 'P2020'
     })

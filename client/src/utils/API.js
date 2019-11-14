@@ -36,8 +36,9 @@ export default {
             headers
         })
     },
-    updateUser(id) {
-        return axios.patch(`${URL}/users/${id}`, {
+    updateUser(id, body) {
+        headers.Authorization = localStorage.getItem('token')
+        return axios.patch(`${URL}/users/${id}`, body, {
             headers
         })
     },
