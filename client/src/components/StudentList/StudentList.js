@@ -51,7 +51,7 @@ class StudentList extends React.Component {
                         }
                     </div>
                 </div>
-            ) : <MyProfile user={this.state.user} editable={isEditable} backtrace={this.backtrace} />
+            ) : <MyProfile user={this.state.user} role={this.props.role} updateUser={this.props.updateUser} editable={isEditable} backtrace={this.backtrace} />
         )
     }
 

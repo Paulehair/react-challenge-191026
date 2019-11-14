@@ -13,13 +13,19 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
-    background: #FF885F;
     font-size: 18px;
     line-height: 24px;
     font-weight: 600;
     color: $white;
-    border: 1px solid #DA643A;
     border-radius: 13px;
+    &.user {
+        border: 1px solid #DA643A;
+        background: #FF885F;
+    }
+    &.superadmin {
+        border: 1px solid #096FAC;
+        background: #27A3ED;
+    }
     @media screen and (max-width: 1200px) {
         width: 100%;
     }

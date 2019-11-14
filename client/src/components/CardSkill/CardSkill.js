@@ -3,8 +3,8 @@ import "./style.scss"
 
 const options = ['A', 'B', 'C', 'D', 'E', 'F']
 
-export default ({ skill, editMode }) => (
-    <div className="CardSkill">
+export default ({ skill, editMode, role }) => (
+    <div className={`CardSkill ${role}`}>
         <p>{skill.name}</p>
         {
             editMode ? (

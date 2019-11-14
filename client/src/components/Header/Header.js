@@ -3,10 +3,10 @@ import Tabs from "../Tabs/Tabs"
 import API from "../../utils/API";
 import "./style.scss"
 
-const Header = (props) => (
+const Header = ({ role, handleChange }) => (
     <div className="Header wrapper">
-        <nav className="Navigation">
-            <Tabs role={props.role} handleChange={props.handleChange} />
+        <nav className={`Navigation ${role}`}>
+            <Tabs role={role} handleChange={handleChange} />
             <a href="/" className="Disconnect" onClick={API.logout}>Se déconnecter</a>
         </nav>
     </div>

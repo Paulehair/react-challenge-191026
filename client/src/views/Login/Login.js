@@ -29,7 +29,8 @@ class Login extends Component {
     }
     try {
         await API.login(email, password, this.role);
-        window.location = '/dashboard'
+        // window.location = '/dashboard'
+        this.props.onLogin()
 
     } catch(err) {
         //TODO: ERROR FEEDBACK
@@ -127,7 +128,7 @@ class Login extends Component {
               <Button className="submit-btn" onClick={this.send} block bssize="large" type="submit">
                 Se connecter
               </Button>
-              <a href="/reset-password" className="forgot-pwd">Mot de passe oublié</a>
+              {/* <a href="/reset-password" className="forgot-pwd">Mot de passe oublié</a> */}
             </div>
           </div>
         </div>

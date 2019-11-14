@@ -11,9 +11,15 @@
 
 .main-container {
     height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     .auth-container {
         width: 496px;
         z-index: 2;
@@ -38,9 +44,15 @@
             margin-bottom: 56px;
             margin-left: auto;
             margin-right: auto;
+            display: -webkit-box;
+            display: -ms-flexbox;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            -webkit-box-pack: justify;
+                -ms-flex-pack: justify;
+                    justify-content: space-between;
+            -webkit-box-align: center;
+                -ms-flex-align: center;
+                    align-items: center;
             color: #ffffff;
 
             span {
@@ -64,7 +76,10 @@
                 position: relative;
                 cursor: pointer;
                 outline: none;
-                user-select: none;
+                -webkit-user-select: none;
+                   -moz-user-select: none;
+                    -ms-user-select: none;
+                        user-select: none;
             }
 
             /* Estilo Flat */
@@ -74,6 +89,7 @@
                 height: 27px;
                 background-color: #ffffff;
                 border-radius: 60px;
+                -webkit-transition: background 0.4s;
                 transition: background 0.4s;
                 &.student {
                     &:before {
@@ -100,6 +116,7 @@
                 bottom: 1px;
                 right: 1px;
                 border-radius: 60px;
+                -webkit-transition: background 0.4s;
                 transition: background 0.4s;
             }
 
@@ -110,6 +127,7 @@
                 width: 20px;
                 background-color: #ffffff;
                 border-radius: 100%;
+                -webkit-transition: margin 0.4s, background 0.4s;
                 transition: margin 0.4s, background 0.4s;
             }
 
@@ -120,13 +138,13 @@
 
         .login-container {
             width: 496px;
-            height: 349px;
+            padding: 50px 0;
             background: #FFFFFF;
             border: 1px solid rgba(0, 0, 0, 0.1);
-            box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+                    box-sizing: border-box;
             border-radius: 13px;
             .formGroup-container {
-                margin-top: 64px;
                 margin-bottom: 40px;
 
                 .inputField {
@@ -142,6 +160,12 @@
 
                 }:first-child {
                     margin-bottom: 24px;
+                }::-webkit-input-placeholder {
+                    color: rgba(0, 0, 0, 0.4);
+                }:-ms-input-placeholder {
+                    color: rgba(0, 0, 0, 0.4);
+                }::-ms-input-placeholder {
+                    color: rgba(0, 0, 0, 0.4);
                 }::placeholder {
                     color: rgba(0, 0, 0, 0.4);
                 }
@@ -179,6 +203,7 @@
                 font-weight: 600;
                 font-size: 18px;
                 text-align: center;
+                -webkit-transition: background 0.3s ease-in-out;
                 transition: background 0.3s ease-in-out;
                 &:hover {
                     background: darken(#0AA997, 6%);

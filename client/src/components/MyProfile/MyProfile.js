@@ -40,17 +40,14 @@ export default class MyProfile extends React.Component {
         if (company.value !== this.props.user.company) {
             body.company = company.value
         }
-
-        await API.updateUser(this.props.user._id, body)
         this.editMode()
-        window.location = "/"
-        window.location = "/dashboard"
+        this.props.updateUser(this.props.user._id, body)
     }
 
     render() {
         return (
             <>
-                { !this.props.editable && <div className="backtrace"><button onClick={this.props.backtrace}>Retour</button></div> }
+                { (!this.props.editable || this.props.role !== 'user') && <div className="backtrace"><button onClick={this.props.backtrace}>Retour</button></div> }
                 <CardProfile user={this.props.user} editMode={this.state.editMode} />
                 <div className="SkillContainer">
                     <h2 className="Title">Compétences</h2>
@@ -70,7 +67,7 @@ export default class MyProfile extends React.Component {
                     }
                     <div className="CardSkillContainer">
                         {
-                            this.props.user.skills.map((skill, i) => <CardSkill key={i} skill={skill} editMode={this.state.editMode} /> )
+                            this.props.user.skills.map((skill, i) => <CardSkill role={this.props.role} key={i} skill={skill} editMode={this.state.editMode} /> )
                         }
                     </div>
                 </div>

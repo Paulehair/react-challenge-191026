@@ -19,8 +19,13 @@
         font-size: 18px;
         font-weight: 600;
         color: $white;
-        background-color: #F7774A;
         border-bottom: 1px solid rgba($color: $white, $alpha: 0.3);
+        &.user {
+            background-color: #F7774A;
+        }
+        &.superadmin {
+            background-color: #0B8EDC;
+        }
         .NavigationItems {
             display: -webkit-box;
             display: -ms-flexbox;
