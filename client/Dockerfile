@@ -8,7 +8,7 @@ COPY . .
 # ENV REACT_APP_BACKEND_URL=${BACKEND_URL}
 # dans la commande de build rajouter : --build-arg=BACKEND_URL=http://url:port
 EXPOSE 3000
-CMD ["npm", "build"]
+RUN npm run build
 
 FROM nginx:alpine
-COPY --from=build /home/node/build /usr/share/nginx/html
+COPY --from=0 /home/node/build /usr/share/nginx/html

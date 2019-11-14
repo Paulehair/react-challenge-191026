@@ -5,7 +5,7 @@ const cors = require('cors')
 
 //On définit notre objet express nommé app
 const app = express();
-const AppError = require('./services/AppError')
+const AppError = require('./services/appError')
 
 //Body Parser
 const urlencodedParser = bodyParser.urlencoded({
@@ -29,7 +29,7 @@ app.use("/api/v1/skills", skillRouter);
  * Only to be used for inserting / deleting original data
 */
 const dataRouter = require('./routes/dataRoutes')
-app.use("/api/v1/data",dataRouter)
+app.use("/api/v1/data", dataRouter)
 
 
 
