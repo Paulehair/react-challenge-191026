@@ -61,6 +61,18 @@
       "search": [
         "search-1"
       ]
+    },
+    {
+      "uid": "in76hg99crrkpcbz2rjnmgbiw74s72y0",
+      "css": "ok",
+      "code": 59396,
+      "src": "modernpics"
+    },
+    {
+      "uid": "rrhco7mfj6ro9yzhe4a1rbln9flw47re",
+      "css": "cancel",
+      "code": 59397,
+      "src": "modernpics"
     }
   ]
 }

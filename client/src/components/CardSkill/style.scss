@@ -9,10 +9,14 @@
     align-items: center;
     background: #FF885F;
     font-size: 18px;
+    line-height: 24px;
     font-weight: 600;
     color: $white;
     border: 1px solid #DA643A;
     border-radius: 13px;
+    @media screen and (max-width: 1200px) {
+        width: 100%;
+    }
     .Note {
         margin-left: 20px;
         font-size: 40px;

@@ -1,14 +1,6 @@
 import React from "react";
 import "./style.scss"
 
-export default class CardSkill extends React.Component {
-
-    render() {
-        return (
-            <div className="CardSkill">
-                <p>Programmation côté client</p>
-                <span className="Note">C</span>
-            </div>
-        );
-    }
+export default ({data}) => {
+    return <div className="CardSkill"><p>{data.skill}</p><span className="Note">{data.note}</span></div>
 }
