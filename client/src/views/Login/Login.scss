@@ -24,7 +24,7 @@
         .title {
             font-family: neue-haas-grotesk-display, sans-serif;
             font-style: normal;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 24px;
             text-align: center;
             color: #FFFFFF;
@@ -46,7 +46,7 @@
             span {
                 font-family: neue-haas-grotesk-display, sans-serif;
                 font-style: normal;
-                font-weight: 500;
+                font-weight: 600;
                 font-size: 20px;
                 line-height: 105%;
                 letter-spacing: 0.03em;
@@ -169,36 +169,32 @@
             }
 
             .submit-btn {
+                display: block;
+                margin: 0 auto;
                 background: #0AA997;
                 border-radius: 7px;
-                width: 144px;
-                height: 48px;
+                padding: 16px;
                 border: none;
                 color: #FFFFFF;
-                font-family: neue-haas-grotesk-display, sans-serif;
-                font-style: normal;
-                font-weight: 500;
+                font-weight: 600;
                 font-size: 18px;
-                line-height: 105%;
                 text-align: center;
-                letter-spacing: 0.03em;
-                display: block;
-                margin-left: auto;
-                margin-right: auto;
+                transition: background 0.3s ease-in-out;
+                &:hover {
+                    background: darken(#0AA997, 6%);
+                }
             }
 
             .forgot-pwd {
-                font-family: neue-haas-grotesk-display, sans-serif;
-                font-style: normal;
-                font-weight: 500;
-                font-size: 18px;
-                line-height: 105%;
-                letter-spacing: 0.03em;
+                font-weight: 600;
+                font-size: 17px;
                 color: rgba(0, 0, 0, 0.3);
-                text-decoration: none;
                 text-align: center;
                 display: block;
                 margin: 24px auto 0 auto;
+                &:hover {
+                    text-decoration: underline;
+                }
             }
         }
     }

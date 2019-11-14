@@ -1,9 +1,9 @@
 @import './../../global/variables';
 
 .SkillContainer {
+    position: relative;
     width: 100%;
-    margin-left: 40px;
-    padding-top: 40px;
+    margin: 40px 0 0 40px;
     padding-right: 36px;
     .Title {
         margin-bottom: 32px;
@@ -11,10 +11,51 @@
         font-weight: 600;
         color: $white;
     }
+    .EditContainer {
+        position: absolute;
+        top: 16px;
+        right: 36px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        user-select: none;
+        cursor: pointer;
+        color: $white;
+        font-size: 15px;
+        font-weight: 600;
+        & > * {
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            &:after {
+                font-family: 'fontello';
+                display: block;
+                margin-left: 10px;
+            }
+        }
+        .Edit:after {
+            content: '\E802';
+            font-size: 24px;
+        }
+        .Cancel {
+            margin-right: 24px;
+            &:after {
+                content: '\E805';
+                font-size: 20px;
+            }
+        }
+        .Submit:after {
+            content: '\E804';
+            font-size: 20px;
+        }
+    }
     .CardSkillContainer {
         display: flex;
         justify-content: space-between;
         align-items: flex-start;
         flex-wrap: wrap;
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+        }
     }
 }
