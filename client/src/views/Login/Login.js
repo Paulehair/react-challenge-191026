@@ -28,7 +28,7 @@ class Login extends Component {
       return;
     }
     try {
-        await API.login(email, password, this.role);
+        const test = await API.login(email, password, this.role);
         // window.location = '/dashboard'
         this.props.onLogin()
 

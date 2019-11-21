@@ -57,7 +57,7 @@ exports.login = catchAsync(async (req, res, next) => {
     }
 
     if(user.role !== role) {
-        return next(new AppError('Vous n\'avez pas sélectionné le bon profil.'))
+        return next(new AppError('Vous n\'avez pas sélectionné le bon profil.'), 403)
     }
     
     const token = signToken(user._id);
