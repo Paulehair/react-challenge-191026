@@ -25,6 +25,8 @@ $ docker-compose up
 
 #### Client is running on http://localhost:3000 and server on http://localhost:9000
 
+#### App deployed on http://51.158.110.183/
+
 #### To populate with projet data go to : http://localhost:9000/api/v1/data/import
 #### Check if data are uploaded by visiting : http://localhost:9000/api/v1/users
 
