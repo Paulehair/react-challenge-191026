@@ -64,7 +64,8 @@ exports.login = catchAsync(async (req, res, next) => {
 
     res.status(200).json({
         status: 'success',
-        token
+        token,
+        user
     });
 })
 
@@ -82,13 +83,14 @@ exports.checkLogIn = catchAsync(async (req, res, next) => {
     // Token verification
     const decoded = await promisify(jwt.verify)(token, config.JWT_SECRET);
 
-    const currentUser = await User.findById(decoded.id);
+    const currentUser = await User.findById(decoded.id).lean();
     if (!currentUser) {
         return next(new AppError('Cet utilisateur n\'existe pas ou n\'est pas connecté.'), 401);
     }
     
     req.user = currentUser;
-    next();
+    
+    next()
 })
 
 exports.protect = catchAsync(async (req, res, next) => {

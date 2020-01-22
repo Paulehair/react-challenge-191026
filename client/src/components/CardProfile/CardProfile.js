@@ -7,15 +7,22 @@ export default class CardProfile extends React.Component {
         const { user } = this.props
         return (
             <div className="CardProfile">
-                <div className="Banner"><span className="Image"></span></div>
+                <div className="Banner">
+                    <span className="Image"></span>
+                </div>
                 <div className="Content">
-                    <div className="ImgProfile"><span className="Image"></span></div>
+                    <div className="ImgProfile">
+                        <span className="Image"></span>
+                    </div>
                     <div className="Name">
                         <p className="FirstName">{`${user.firstName} ${user.lastName}`}</p>
                     </div>
                     <div className="Promotion Item">
                         <span>Promotion</span>
-                        <p><span>WEB</span> - <span>{user.promotion}</span></p>
+                        <p>
+                            <span>WEB</span> - 
+                            <span>{user.promotion}</span>
+                        </p>
                     </div>
                     <div className="Job Item">
                         <span>Poste</span>

@@ -8,9 +8,11 @@
     height: 515px;
     border-radius: 13px;
     width: 100%;
+
     .Banner {
         height: 147px;
         border: solid 5px #aaa;
+
         .Image {
             background-size: cover;
             background-position: center center;
@@ -19,13 +21,16 @@
             height: 100%;
             background-color: #aaa;
         }
+
     }
+
     .Content {
         & > * {
             position: absolute;
             padding: 0px 24px;
             width: 100%;
         }
+
         .ImgProfile {
             padding: 0 ;
             top: 74px;
@@ -36,6 +41,7 @@
             left: 50%;
             -webkit-transform: translateX(-50%);
                     transform: translateX(-50%);
+
             .Image {
                 display: block;
                 height: 100%;
@@ -45,13 +51,16 @@
                 background-position: center center;
                 background-repeat: no-repeat;
             }
+
         }
+
         .Name {
             top: 230px;
             text-align: center;
             font-weight: 600;
             font-size: 24px;
         }
+
         .Item {
             & > span {
                 display: block;
@@ -60,15 +69,19 @@
                 font-weight: 600;
                 color: lightgrey;
             }
+
             a {
                 display: block;
                 color: #0B8EDC;
             }
+            
             &.Promotion {
                 top: 285px;
             }
+            
             &.Job {
                 top: 356px;
+                
                 p.edit {
                     display: -webkit-box;
                     display: -ms-flexbox;
@@ -78,15 +91,18 @@
                             justify-content: space-between;
                 }
             }
+            
             &.Mail {
                 top: 424px;
             }
         }
+        
         input {
             background-color: #F2F2F2;
             border-radius: 8px;
             height: 40px;
             padding: 5px 10px;
+            
             &:not(:last-child) {
                 margin-right: 10px;
             }
