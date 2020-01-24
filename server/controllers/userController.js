@@ -12,7 +12,7 @@ exports.getAllUsers = catchAsync(async (req, res) => {
         //         $ne: req.user._id
         //     }
         // })
-        .find({})
+        .find({role: {$eq: 'user'}})
         .sort({ 'lastName': 1 })
         .select('-password -role -firstConnection')
         .lean()
